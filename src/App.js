@@ -1,42 +1,64 @@
 import { Component, useState, useRef, useEffect, createContext } from "react";
-
 import ReactDOM from "react-dom";
-
+import axios from "axios";
 import "./styles.css";
-import { fetchMarketCap } from "./Actions/Marketcap";
-
-// import BigTextDisplay from "./BigTextDisplay";
-// import ColorSampleCircle from "./ColorSampleCircle";
-// import Footer from "./Footer";
-// import RandomColors from "./RandomColors";
-// import RGBSlider from "./RGBSlider";
-// import Shades from "./Shades";
-// import Variants from "./Variants";
 
 class App extends Component {
+  state = {
+    joke: "",
+    coinData: [],
+  };
+
   componentDidMount() {
-    setInterval(this.props.fetchMarketCap(), 3000);
+    this.getJoke();
+    this.interval = setInterval(() => {
+      this.getJoke();
+    }, 6000);
   }
-  componentDidUpdate() {}
+
+  async getJoke() {
+    let options = {
+      method: "GET",
+      url: "https://coinranking1.p.rapidapi.com/coins",
+      params: {
+        referenceCurrencyUuid: "yhjMzLPhuIDl",
+        timePeriod: "24h",
+        tiers: "1",
+        orderBy: "marketCap",
+        orderDirection: "desc",
+        limit: "50",
+        offset: "0",
+      },
+      headers: {
+        "x-rapidapi-key": "de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6",
+        "x-rapidapi-host": "coinranking1.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      console.log(response.data.data.coins);
+      this.setState({
+        joke: response.data.data.coins[0].name,
+        coinData: response.data.data.coins.map((coin) => <li>{coin.name}</li>),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   componentWillUnmount() {
-    // this.destroyConnection();
+    clearInterval(this.interval);
   }
 
-  // let response = {};
-  /*
-  let realCoinData = [];
-  const [displayResponse, setDisplayResponse] = useState([]);
-
-  componentDidMount(){
-    axios.request(options)
-      .then(res => {
-        setDisplayResponse(res.data.data.coins);
-      });
-  }; */
-
   render() {
-    return <></>;
+    return (
+      <>
+        <div className="topLogoBrand">color22</div>
+        <div className="appContainer">{this.state.joke}</div>
+        <div className="topLogoBrand">{this.state.coinData}</div>
+      </>
+    );
   }
 }
 
