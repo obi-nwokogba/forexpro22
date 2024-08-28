@@ -8,10 +8,12 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
-
-import icon from "../images/cryptocurrency.png";
+// import { AudioOutlined } from "@ant-design/icons";
+import { Input, Space } from "antd";
 
 const Navbar = () => {
+  const { Search } = Input;
+
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
 
@@ -36,7 +38,16 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="logo-container">forexpro22</div>
-      <div className="logo-container">forespro22</div>
+      <div className="logo-container">
+        <Space direction="vertical">
+          <Search
+            placeholder="search currency, coin, symbol"
+            allowClear
+            // onSearch={onSearch}
+            style={{ width: 304 }}
+          />
+        </Space>
+      </div>
     </div>
   );
 };
