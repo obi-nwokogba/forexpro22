@@ -1,0 +1,326 @@
+html {
+  font-family: "Hanken Grotesk", sans-serif;
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: #ebebeb;
+  font-weight: 400;
+}
+
+body {
+  font-family: "Hanken Grotesk", sans-serif;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+a:hover {
+  color: #1923a9 !important;
+  text-decoration: none;
+}
+
+.topLogoBrand {
+  color: gray;
+  display: block;
+  text-align: center;
+  font-weight: 300;
+  font-size: 3em;
+  opacity: 0.37;
+  letter-spacing: -2px;
+  padding: 8px 0px 0px 0px;
+}
+
+.appContainer {
+  z-index: 1;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-family: sans-serif;
+  text-align: center;
+  color: #444444;
+  background-color: #f7f7f7;
+  max-width: 700px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  -moz-box-shadow: 0 0 33px #ccccccad;
+  -webkit-box-shadow: 0 0 33px #ccccccad;
+  box-shadow: 0 0 33px #ccccccad;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  font-family: "Hanken Grotesk", sans-serif;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+h3.swatchHeader {
+  margin-top: 20px;
+  border-top: solid 2px #f0f0f0;
+  padding-top: 20px;
+}
+
+.lighter {
+  opacity: 0.5;
+}
+
+.lighter2 {
+  opacity: 0.2;
+}
+
+.colorHistoryText {
+  font-weight: 400;
+  color: rgb(160, 160, 160);
+  text-align: left;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+.colorSampleCirlce {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: none;
+  margin-right: 30px;
+}
+
+.colorSampleCirlce:hover {
+  transition-duration: 500ms;
+  transition-property: border-radius;
+  border-radius: 10px;
+}
+
+.HexDisplay {
+  color: red;
+  border-bottom: solid 4px red;
+}
+
+/* BIG TEXT DISPLAY AT TOP */
+.detailDisplay1 {
+  color: rgb(62, 62, 62);
+  font-size: 1.8em;
+  border-bottom: solid 2px rgb(232, 232, 232);
+  display: block;
+  padding: 7px 0px 8px 0px;
+  font-weight: 500;
+  margin-top: -2px;
+  width: 500px;
+}
+
+.displayColorContainer {
+  display: flex;
+  flex-direction: row !important;
+  padding: 15px 0px 15px 0px;
+}
+
+.colorDetailsColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f9f9f9;
+  align-items: stretch;
+}
+
+.footercontainer {
+  border-top: solid 2px rgba(173, 173, 173, 0.22);
+  padding-top: 20px;
+  margin-top: 60px;
+  font-size: 0.8em;
+  text-align: left;
+  text-transform: uppercase;
+  opacity: 0.6;
+  line-height: 1.2em;
+}
+
+.footercontainer > a {
+  color: gray;
+  font-weight: 600;
+}
+
+.sliderControl {
+  cursor: move;
+  color: black;
+  min-width: 70px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  width: 70px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #acacac;
+  border: solid 2px none;
+  margin: auto;
+  user-select: none;
+  margin-bottom: -20px;
+  line-height: 3.45em;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.sliderControl:hover {
+  background-color: #5d5d5d;
+  /* min-width: 60px;
+  height: 60px; */
+  transition-duration: 200ms;
+}
+
+.sliderContainer {
+  border-bottom: solid 3px #d1d1d1;
+  margin-bottom: 20px;
+}
+
+.RGBSliderContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.copyClipboardIcon {
+  margin-left: 10px;
+  padding: 5px;
+  margin-bottom: -3px;
+  border-radius: 5px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.copyClipboardIcon:hover {
+  background-color: rgb(212, 212, 212);
+  opacity: 0.5;
+}
+
+.shadesContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.shadeCellContainer {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+  text-transform: uppercase;
+  color: rgb(122, 122, 122);
+  font-weight: 600;
+  font-size: 0.8em;
+  border: solid 3px transparent;
+}
+
+.shadeCell {
+  width: 100%;
+  height: 70px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition-duration: 500ms;
+  transition-property: zoom;
+}
+
+.shadeCell:hover {
+  transition-duration: 120ms;
+  transition-property: margin-top;
+  margin-top: -10px;
+}
+
+.shadeCellLabel {
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  color: #4c4c4c;
+}
+
+.shadeCellCopyButton {
+  display: block;
+  text-align: center;
+  margin-top: 0px;
+  padding: 6px;
+  cursor: pointer;
+  opacity: 0.4;
+  font-size: 0.8em;
+  border-radius: 8px;
+  padding-bottom: 9px;
+}
+
+.shadeCellCopyButton:hover {
+  background-color: #e8e8e8;
+  color: #0d0d0d;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.shadeCellCopyIcon {
+  opacity: 0.3;
+  margin-left: 5px;
+  margin-bottom: -3px;
+}
+
+.currentColorMarker {
+  width: 14px;
+  height: 14px;
+  margin: auto;
+  border-radius: 7px;
+  margin-top: 28px;
+}
+
+.notification {
+  font-size: 1.4em;
+  font-weight: 300;
+  text-align: left;
+  padding: 20px;
+  background-color: #e8f985;
+  margin-bottom: 15px;
+}
+
+.makeMoreColorsButton {
+  font-family: "Hanken Grotesk", sans-serif;
+  border: solid 1px rgb(91, 91, 91);
+  color: rgb(91, 91, 91);
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  margin-left: 15px;
+  margin-top: -15px !important;
+}
+
+.makeMoreColorsButton:hover {
+  color: white;
+  background-color: #c53f92;
+}
+
+.fadeOut {
+  font-size: 1.4em;
+  font-weight: 300;
+  text-align: left;
+  padding: 20px;
+  background-color: #e8f985;
+  margin-bottom: 15px;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
+}
+.fadeIn {
+  font-size: 1.4em;
+  font-weight: 300;
+  text-align: left;
+  padding: 20px;
+  background-color: #e8f985;
+  margin-bottom: 15px;
+  opacity: 1;
+  width: 100%;
+  height: 100px;
+  transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
+}
