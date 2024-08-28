@@ -17,15 +17,30 @@ a:hover {
   text-decoration: none;
 }
 
-.topLogoBrand {
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.logo-container {
   color: gray;
   display: block;
   text-align: center;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 3em;
-  opacity: 0.37;
+  opacity: 0.77;
   letter-spacing: -2px;
   padding: 8px 0px 0px 0px;
+}
+
+.search-container {
+  margin-left: 20px;
 }
 
 .appContainer {

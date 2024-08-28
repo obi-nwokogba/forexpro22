@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="logo-container">forexpro22</div>
-      <div className="logo-container">
+      <div className="search-container">
         <Space direction="vertical">
           <Search
             placeholder="search currency, coin, symbol"

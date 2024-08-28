@@ -1,6 +1,7 @@
 import { Component, useState, useRef, useEffect, createContext } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import * as d3 from "d3";
 
 import { Navbar } from "./components";
 import "./styles.css";
@@ -61,10 +62,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="topLogoBrand">forexpro22</div>
-        <div className="navbar">
-          <Navbar />
-        </div>
+        <Navbar />
         <div className="appContainer">{this.state.coinData}</div>
       </>
     );
