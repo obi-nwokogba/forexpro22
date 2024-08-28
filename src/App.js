@@ -1,6 +1,8 @@
 import { Component, useState, useRef, useEffect, createContext } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+
+import { Navbar } from "./components";
 import "./styles.css";
 
 class App extends Component {
@@ -40,7 +42,12 @@ class App extends Component {
       console.log(response.data.data.coins);
       this.setState({
         joke: response.data.data.coins[0].name,
-        coinData: response.data.data.coins.map((coin) => <li>{coin.name}</li>),
+        coinData: response.data.data.coins.map((coin) => (
+          <div className="currencyBox1">
+            {coin.name} <span className="currencySymbol1">{coin.symbol}</span>
+            {coin.change}% ${coin.price}
+          </div>
+        )),
       });
     } catch (error) {
       console.error(error);
@@ -54,9 +61,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <div className="topLogoBrand">color22</div>
-        <div className="appContainer">{this.state.joke}</div>
-        <div className="topLogoBrand">{this.state.coinData}</div>
+        <div className="topLogoBrand">forexpro22</div>
+        <div className="navbar">
+          <Navbar />
+        </div>
+        <div className="appContainer">{this.state.coinData}</div>
       </>
     );
   }
