@@ -10,8 +10,6 @@ import "./styles.css";
 // import Shades from "./Shades";
 // import Variants from "./Variants";
 
-export const CurrentColorContext = createContext(null);
-
 function App() {
   /*
   const [post, updatePost] = useState({ title: "" });
@@ -40,37 +38,22 @@ function App() {
     },
   };
 
-  let response = "";
-  let displayResponse;
+  // let response = {};
+  let realCoinData = [];
+  const [displayResponse, setDisplayResponse] = useState([]);
 
-  async function getData() {
-    try {
-      response = await axios.request(options);
-      displayResponse = response.data.data;
-      // displayResponse = response.map((record) => (
-      //   <tr>
-      //     <td>{record.teacherID}</td>
-      //     <td>{record.teacherName}</td>
-      //     <td>{record.teacherEmail}</td>
-      //   </tr>
-      // ));
-      console.log(displayResponse);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  getData();
+  componentDidMount(){
+    axios.request(options)
+      .then(res => {
+        setDisplayResponse(res.data.data.coins);
+      });
+  };
 
   return (
     <>
       <div className="topLogoBrand">forexpro22</div>
       <div className="appContainer">
-        <div>
-          <p>{displayResponse}</p>
-          ...
-        </div>
+        <div>{realCoinData}</div>
       </div>
     </>
   );
