@@ -1,8 +1,24 @@
+::root {
+  --pale1: #f2f6ff;
+  --gray2: #9da1a7;
+  --gray1: #3d4043;
+  --pale2: #d4eff8;
+  --red1: #ea7880;
+  --gray2: #a3a6ac;
+  --blue1: #4371eb;
+  --gray3: #dadce0;
+  --gray0: #45494c;
+  --gray00: #404346;
+  --pale4: #dbe5fd;
+  --gray5: #c2c6ce;
+  --pale0: #d6e2fd;
+}
+
 html {
   font-family: "Hanken Grotesk", sans-serif;
   box-sizing: border-box;
   font-size: 15px;
-  background-color: #ebebeb;
+  background-color: var(--pale1);
   font-weight: 400;
 }
 
@@ -10,11 +26,20 @@ body {
   font-family: "Hanken Grotesk", sans-serif;
   box-sizing: border-box;
   font-weight: 400;
+  color: var(--gray0);
 }
 
 a:hover {
   color: #1923a9 !important;
   text-decoration: none;
+}
+
+.positive-change {
+  color: var(--blue1);
+}
+
+.negative-change {
+  color: var(--red1);
 }
 
 .nav-container {
