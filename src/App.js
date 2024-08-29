@@ -1,15 +1,12 @@
 import { Component } from "react";
 import axios from "axios";
-// import * as d3 from "d3";
 import COLORS from "./Constants";
-
 import { Navbar, Home, Currency } from "./components";
 import "./styles.css";
 import { Layout } from "antd";
-import {
-  Routes, // instead of "Switch"
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// import * as d3 from "d3";
 
 class App extends Component {
   state = {
@@ -74,37 +71,12 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <Navbar />
-        <Layout>
-          <div className="routes">
-            <Routes>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/forex">
-                <Currency />
-              </Route>
-              <Route exact path="/currency">
-                <Currency />
-              </Route>
-              <Route exact path="/exchanges">
-                <Home />
-              </Route>
-              <Route exact path="/cryptocurrencies">
-                <Home />
-              </Route>
-              <Route exact path="/crypto/:coinId">
-                <Currency />
-              </Route>
-              <Route exact path="/news">
-                <Home />
-              </Route>
-            </Routes>
-          </div>
-        </Layout>
-        <div className="app-container">{this.state.coinData}</div>
-      </>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/curency" component={Currency} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
