@@ -73,8 +73,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/curency" component={Currency} />
+          <Route path="/" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
     );

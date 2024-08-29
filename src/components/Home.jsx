@@ -3,11 +3,6 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 // import * as d3 from "d3";
 import { Layout } from "antd";
-import {
-  BrowserRouter,
-  Routes, // instead of "Switch"
-  Route,
-} from "react-router-dom";
 import COLORS from "../Constants";
 
 import { Navbar } from "./";
@@ -78,26 +73,7 @@ class Home extends Component {
     return (
       <>
         <Navbar />
-        <Layout>
-          <div className="routes">
-            <Routes>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/exchanges">
-                <Home />
-              </Route>
-              <Route exact path="/cryptocurrencies">
-                <Home />
-              </Route>
-
-              <Route exact path="/news">
-                <Home />
-              </Route>
-            </Routes>
-          </div>
-        </Layout>
-
+        Home
         <div className="app-container">{this.state.coinData}</div>
       </>
     );
