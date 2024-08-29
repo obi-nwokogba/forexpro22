@@ -1,17 +1,19 @@
 import { Component } from "react";
+import ReactDOM from "react-dom";
 import axios from "axios";
 // import * as d3 from "d3";
-import COLORS from "./Constants";
-
-import { Navbar, Home, Currency } from "./components";
-import "./styles.css";
 import { Layout } from "antd";
 import {
+  BrowserRouter,
   Routes, // instead of "Switch"
   Route,
 } from "react-router-dom";
+import COLORS from "../Constants";
 
-class App extends Component {
+import { Navbar } from "./";
+import "../styles.css";
+
+class Home extends Component {
   state = {
     joke: "",
     coinData: [],
@@ -82,31 +84,24 @@ class App extends Component {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route exact path="/forex">
-                <Currency />
-              </Route>
-              <Route exact path="/currency">
-                <Currency />
-              </Route>
               <Route exact path="/exchanges">
                 <Home />
               </Route>
               <Route exact path="/cryptocurrencies">
                 <Home />
               </Route>
-              <Route exact path="/crypto/:coinId">
-                <Currency />
-              </Route>
+
               <Route exact path="/news">
                 <Home />
               </Route>
             </Routes>
           </div>
         </Layout>
+
         <div className="app-container">{this.state.coinData}</div>
       </>
     );
   }
 }
 
-export default App;
+export default Home;
