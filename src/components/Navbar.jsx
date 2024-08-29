@@ -36,19 +36,26 @@ const Navbar = () => {
   }, [screenSize]);
 
   return (
-    <div className="nav-container">
-      <div className="logo-container">forexpro22</div>
-      <div className="search-container">
-        <Space direction="vertical">
-          <Search
-            placeholder="search currency, coin, symbol"
-            allowClear
-            // onSearch={onSearch}
-            style={{ width: 304 }}
-          />
-        </Space>
+    <>
+      <div className="topmost-popular-nav">
+        <span>Bitcoin</span>
+        <span>Ethereum</span>
+        <span>Solana</span>
       </div>
-    </div>
+      <div className="nav-container">
+        <div className="logo-container">forexpro22</div>
+        <div className="search-container">
+          <Space direction="vertical">
+            <Search
+              placeholder="search currency, coin, symbol"
+              allowClear
+              // onSearch={onSearch}
+              style={{ width: 304 }}
+            />
+          </Space>
+        </div>
+      </div>
+    </>
   );
 };
 

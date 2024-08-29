@@ -1,4 +1,9 @@
-::root {
+html {
+  font-family: "Hanken Grotesk", sans-serif;
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: var(--pale1);
+  font-weight: 400;
   --pale1: #f2f6ff;
   --gray2: #9da1a7;
   --gray1: #3d4043;
@@ -12,14 +17,6 @@
   --pale4: #dbe5fd;
   --gray5: #c2c6ce;
   --pale0: #d6e2fd;
-}
-
-html {
-  font-family: "Hanken Grotesk", sans-serif;
-  box-sizing: border-box;
-  font-size: 15px;
-  background-color: var(--pale1);
-  font-weight: 400;
 }
 
 body {
@@ -40,6 +37,23 @@ a:hover {
 
 .negative-change {
   color: var(--red1);
+}
+
+.topmost-popular-nav {
+  max-width: 1200px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.topmost-popular-nav > span {
+  margin-right: 20px;
+  border-right: solid 1px var(--gray2);
+  padding: 0 0 0 20px;
+}
+
+.topmost-popular-nav > span:hover {
+  color: var(--blue1);
+  cursor: pointer;
 }
 
 .nav-container {
@@ -68,20 +82,20 @@ a:hover {
   margin-left: 20px;
 }
 
-.appContainer {
+.app-container {
   z-index: 1;
   font-family: "Hanken Grotesk", sans-serif;
   font-family: sans-serif;
   text-align: center;
   color: #444444;
-  background-color: #f7f7f7;
+  background-color: #ffffff2d;
   max-width: 1200px;
   padding: 30px;
   margin: auto;
   margin-top: 15px;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column; */
   -moz-box-shadow: 0 0 33px #ccccccad;
   -webkit-box-shadow: 0 0 33px #ccccccad;
   box-shadow: 0 0 33px #ccccccad;
@@ -365,13 +379,14 @@ h3.swatchHeader {
   transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
 }
 
-.currencyBox1 {
+.currency-box-1 {
   background-color: rgb(251, 251, 251);
   max-width: 33%;
-  display: inline;
+  width: 33%;
+  display: inline-block;
   margin: 30px;
   border-radius: 8px;
-  border: solid 1px gray;
+  border: solid 1px var(--pale1);
   padding: 10px;
   font-size: 2.4em;
 }

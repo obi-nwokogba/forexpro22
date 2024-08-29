@@ -44,9 +44,17 @@ class App extends Component {
       this.setState({
         joke: response.data.data.coins[0].name,
         coinData: response.data.data.coins.map((coin) => (
-          <div className="currencyBox1">
-            {coin.name} <span className="currencySymbol1">{coin.symbol}</span>
-            {coin.change}% ${coin.price}
+          <div className="currency-box-1">
+            {coin.name}
+            <span className="currencySymbol1">{coin.symbol}</span>
+            <div
+              style={{
+                color: coin.change > 0 ? "blue" : "red",
+              }}
+            >
+              {coin.change}%
+            </div>
+            ${coin.price}
           </div>
         )),
       });
@@ -63,7 +71,7 @@ class App extends Component {
     return (
       <>
         <Navbar />
-        <div className="appContainer">{this.state.coinData}</div>
+        <div className="app-container">{this.state.coinData}</div>
       </>
     );
   }
