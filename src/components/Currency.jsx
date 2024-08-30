@@ -5,6 +5,7 @@ import axios from "axios";
 import { Layout } from "antd";
 import COLORS from "../Constants";
 import { Navbar } from "./";
+import { useParams } from 'react-router-dom';
 
 import {
   BrowserRouter,
@@ -15,12 +16,18 @@ import {
 import "../styles.css";
 
 class Currency extends Component {
+
+   //{ coinId } = useParams();
+
   state = {
     joke: "",
     coinData: [],
+    coin:""
   };
 
   componentDidMount() {
+
+
     this.getJoke();
     this.interval = setInterval(() => {
       this.getJoke();
@@ -79,7 +86,7 @@ class Currency extends Component {
     return (
       <>
         <Navbar />
-        <h1>CURRENCY PAGE</h1>
+        <h1>{ this.state.coin } CURRENCY PAGE : { this.state.coin } </h1>
         <Layout>
           <div className="routes"></div>
         </Layout>

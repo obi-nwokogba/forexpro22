@@ -74,8 +74,8 @@ class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/currency/:coinId" element={<Currency />}></Route>
           <Route path="/currency" element={<Currency />}></Route>
-          <Route path="/biggestmovers" element={<Home />}></Route>
         </Routes>
       </BrowserRouter>
     );
