@@ -1,6 +1,6 @@
 const COLORS = {
-  blue1: "black",
-  red1: "white",
+  blue1: "#4371eb",
+  red1: "#ea7880",
 };
 
 export default COLORS;

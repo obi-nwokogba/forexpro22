@@ -41,6 +41,8 @@ const Navbar = () => {
         <Link to="/" className="topmost-nav-link">Home</Link>
         <Link to="/currency/btc" className="topmost-nav-link">Bitcoin</Link>
         <Link to="/currency" className="topmost-nav-link">Ethereum</Link>
+        <Link to="/forex/eurusd" className="topmost-nav-link">EUR/USD</Link>
+        <Link to="/forex/usdjpy" className="topmost-nav-link">USD/JPY</Link>
       </div>
       <div className="nav-container">
         <div className="logo-container">forexpro22</div>

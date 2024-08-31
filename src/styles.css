@@ -49,14 +49,20 @@ a:hover {
 }
 
 .topmost-nav-link {
-  margin-right: 20px;
-  border-right: solid 1px var(--gray2);
-  padding: 0 0 0 20px;
+  margin-right: 0px;
+  border-right: solid 1px var(--pale0);
+  border-bottom:solid 1px var(--pale0);
+  padding: 20px;
+  padding-top:30px;
   text-decoration: none;
+  color: var(--gray00);
+  font-size:0.9em;
+  font-weight: 500;
 }
 
 .topmost-nav-link:hover {
   color: var(--blue1);
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
 }
