@@ -7,3 +7,4 @@ export { default as CryptoDetails } from "./CryptoDetails";
 export { default as Newpage } from "./Newpage";
 export { default as Home } from "./Home";
 export { default as Currency } from "./Currency";
+export { default as Footer } from "./Footer";

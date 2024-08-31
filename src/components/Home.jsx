@@ -5,7 +5,7 @@ import axios from "axios";
 import { Layout } from "antd";
 import COLORS from "../Constants";
 
-import { Navbar } from "./";
+import { Navbar, Footer } from "./";
 import "../styles.css";
 
 class Home extends Component {
@@ -75,6 +75,7 @@ class Home extends Component {
         <Navbar />
         Home
         <div className="app-container">{this.state.coinData}</div>
+        <Footer />
       </>
     );
   }

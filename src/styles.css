@@ -406,3 +406,10 @@ h3.swatchHeader {
 .currencySymbol1 {
   opacity: 0.5;
 }
+
+.footer-container{
+  border-top:solid 1px var(--pale1);
+  padding-top:30px;
+  padding-bottom:200px;
+  width:1200px;
+}
