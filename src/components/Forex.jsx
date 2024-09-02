@@ -1,20 +1,33 @@
 import { Component } from "react";
+import ReactDOM from "react-dom";
 import axios from "axios";
-import COLORS from "./Constants";
-import { Navbar, Home, Currency, Forex } from "./components";
-import "./styles.css";
-import { Layout } from "antd";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 // import * as d3 from "d3";
+import { Layout } from "antd";
+import COLORS from "../Constants";
+import { Navbar } from "./";
+import { useParams } from 'react-router-dom';
 
-class App extends Component {
+import {
+  BrowserRouter,
+  Routes, // instead of "Switch"
+  Route,
+} from "react-router-dom";
+
+import "../styles.css";
+
+class Forex extends Component {
+
+   //{ coinId } = useParams();
+
   state = {
     joke: "",
     coinData: [],
+    coin:""
   };
 
   componentDidMount() {
+
+
     this.getJoke();
     this.interval = setInterval(() => {
       this.getJoke();
@@ -71,16 +84,20 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/currency/:coinId" element={<Currency />}></Route>
-          <Route path="/forex/:coinId" element={<Forex />}></Route>
-          <Route path="/currency" element={<Currency />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <>
+      <div className="app-frame">
+        <Navbar />
+        <h3>{window.location.href}</h3>
+        <h1>{ this.state.coin } CURRENCY PAGE : { this.state.coin } </h1>
+        <Layout>
+          <div className="routes"></div>
+        </Layout>
+
+        <div className="app-container">{this.state.coinData}</div>
+        </div>
+      </>
     );
   }
 }
 
-export default App;
+export default Forex;

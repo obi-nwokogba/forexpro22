@@ -2,28 +2,42 @@ html {
   font-family: "Hanken Grotesk", sans-serif;
   box-sizing: border-box;
   font-size: 15px;
-  background-color: var(--pale1);
+  background-color: var(--pale10);
   font-weight: 400;
-  --pale1: #f2f6ff;
+
+  --red1: #ea7880;
+  --blue1: #4371eb;
+  --blue2: #317af0;
+
   --gray2: #9da1a7;
   --gray1: #3d4043;
-  --pale2: #d4eff8;
-  --red1: #ea7880;
   --gray2: #a3a6ac;
-  --blue1: #4371eb;
   --gray3: #dadce0;
   --gray0: #45494c;
   --gray00: #404346;
-  --pale4: #dbe5fd;
   --gray5: #c2c6ce;
-  --pale0: #d6e2fd;
+
+  --pale000: #f1f6fe;
+  --pale00: #151A23;
+  --pale0: #293547;
+  --pale1: #3E4F6A;
+  --pale2: #52698D;
+  --pale3: #6783B0;
+  --pale4: #7B9ED4;
+  --pale5: #90B8F7;
+  --pale6: #A0C2F8;
+  --pale7: #B0CCF9;
+  --pale8: #C0D6FA;
+  --pale9: #CFE1FC;
+  --pale10: #DFEBFD;
+  --pale11: #EFF5FE;
 }
 
 body {
   font-family: "Hanken Grotesk", sans-serif;
   box-sizing: border-box;
   font-weight: 400;
-  color: var(--gray0);
+  color: var(--pale0);
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -50,13 +64,13 @@ a:hover {
 
 .topmost-nav-link {
   margin-right: 0px;
-  border-right: solid 1px var(--pale0);
-  border-bottom:solid 1px var(--pale0);
+  border-right: solid 1px var(--pale8);
+  border-bottom: solid 1px var(--pale8);
   padding: 20px;
-  padding-top:30px;
+  padding-top: 30px;
   text-decoration: none;
   color: var(--gray00);
-  font-size:0.9em;
+  font-size: 0.9em;
   font-weight: 500;
 }
 
@@ -93,6 +107,12 @@ a:hover {
   margin-left: 20px;
 }
 
+
+.app-frame {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .app-container {
   z-index: 1;
   font-family: "Hanken Grotesk", sans-serif;
@@ -106,10 +126,10 @@ a:hover {
   margin-top: 15px;
   border-radius: 10px;
   /*display: flex;
-  flex-direction: column; */
+  flex-direction: column;
   -moz-box-shadow: 0 0 33px #ccccccad;
   -webkit-box-shadow: 0 0 33px #ccccccad;
-  box-shadow: 0 0 33px #ccccccad;
+  box-shadow: 0 0 33px #ccccccad;*/
 }
 
 h1,
@@ -208,7 +228,7 @@ h3.swatchHeader {
   line-height: 1.2em;
 }
 
-.footercontainer > a {
+.footercontainer>a {
   color: gray;
   font-weight: 600;
 }
@@ -377,6 +397,7 @@ h3.swatchHeader {
   height: 0;
   transition: width 0.5s 0.5s, height 0.5s 0.5s, opacity 0.5s;
 }
+
 .fadeIn {
   font-size: 1.4em;
   font-weight: 300;
@@ -407,9 +428,9 @@ h3.swatchHeader {
   opacity: 0.5;
 }
 
-.footer-container{
-  border-top:solid 1px var(--pale1);
-  padding-top:30px;
-  padding-bottom:200px;
-  width:1200px;
+.footer-container {
+  border-top: solid 1px var(--pale1);
+  padding-top: 30px;
+  padding-bottom: 200px;
+  width: 1200px;
 }
