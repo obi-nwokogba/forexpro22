@@ -14,6 +14,7 @@ export const CONSTANTS2 = {
     usdchf: "USD/CHF",
     usdjpy: "USD/JPY",
     btcusd: "BTC/USD",
+    ethusd: "ETH/USD",
   }
 }
 
