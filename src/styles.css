@@ -533,13 +533,13 @@ h3.swatchHeader {
 }
 
 .tag1 {
-  background-color: var(--pale7);
-  color: var(--pale11);
-  padding: 8px;
+  /* border: solid 2px var(--pale7); */
+  color: var(--pale6);
+  padding: 5px;
   border-radius: 10px;
-  font-size: 0.5em;
-  margin-top: -10px !important;
+  font-size: 0.4em;
   margin-left: 10px;
   margin-right: 10px;
-  vertical-align: super;
+  margin-top: -10px !important;
+  height: 30px !important;
 }
