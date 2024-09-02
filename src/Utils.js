@@ -12,7 +12,8 @@ export const CONSTANTS2 = {
     gbpusd: "GBP/USD",
     gbpjpy: "GBP/JPY",
     usdchf: "USD/CHF",
-    usdjpy: "USD/JPY"
+    usdjpy: "USD/JPY",
+    btcusd: "BTC/USD",
   }
 }
 

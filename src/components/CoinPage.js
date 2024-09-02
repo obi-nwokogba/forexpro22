@@ -6,13 +6,16 @@ export default function CoinPage(props) {
     <span className="page-heading-text">
       {props.coinSymbol} &middot;&nbsp;
       {props.coinName} </span>
+
     <span className="page-heading-text-2">
       <img
-        src={props.coinPriceChange >= 0 ? 'up-arrow.svg' : 'up-arrow.svg'}
+        src={props.coinPriceChange >= 0 ? '../up-arrow.svg' : '../up-arrow.svg'}
         className={props.coinPriceChange >= 0 ? 'up-arrow' : 'down-arrow'}
         alt="" />
-      {props.coinPriceChange}% &middot;&nbsp;
-      {props.coinPrice} </span>
+      {props.coinPriceChange}%
+      <span className="tag1">24h</span>
+      &nbsp;&nbsp;
+      ${props.coinPrice} </span>
 
     <div className='currency-box-1'>
       <div className="text3"> {props.coinName} <span className="lighter">{props.coinSymbol}</span></div>

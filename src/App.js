@@ -74,9 +74,7 @@ class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/currency/:urlSymbol" element={<Currency />}></Route>
           <Route path="/forex/:urlSymbol" element={<Forex />}></Route>
-          <Route path="/currency" element={<Currency />}></Route>
         </Routes>
       </BrowserRouter>
     );
