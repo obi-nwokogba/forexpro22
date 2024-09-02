@@ -1,7 +1,7 @@
 html {
   font-family: "Hanken Grotesk", sans-serif;
   box-sizing: border-box;
-  font-size: 15px;
+  font-size: 14px;
   background-color: var(--pale000);
   font-weight: 400;
 
@@ -70,6 +70,8 @@ a:hover {
   color: var(--gray00);
   font-size: 0.9em;
   font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: -20px;
 }
 
 .topmost-nav-link:hover {
@@ -168,25 +170,49 @@ h3.swatchHeader {
 .text1 {
   font-weight: 600;
   color: var(--pale1);
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 .text2 {
   font-weight: 600;
   color: var(--pale1);
-  font-size: 2em;
+  font-size: 1.1em;
 }
 
 .text3 {
   font-weight: 600;
-  color: var(--pale1);
-  font-size: 2em;
+  color: var(--pale2);
+  font-size: 1em;
 }
 
 .text4 {
-  font-weight: 600;
-  color: var(--pale1);
-  font-size: 2em;
+  font-weight: 500;
+  color: var(--pale2);
+  font-size: 1em;
+}
+
+.text5 {
+  font-weight: 400;
+  color: var(--pale2);
+  font-size: 1em;
+}
+
+.text6 {
+  font-weight: 500;
+  color: var(--pale3);
+  font-size: 0.9em;
+}
+
+.text7 {
+  font-weight: 400;
+  color: var(--pale3);
+  font-size: 0.8em;
+}
+
+.text8 {
+  font-weight: 400;
+  color: var(--pale3);
+  font-size: 0.7em;
 }
 
 .lighter {
@@ -445,14 +471,19 @@ h3.swatchHeader {
 }
 
 .currency-box-1 {
-  width: 28%;
+  width: 29.5%;
   display: inline-block;
-  margin: 3%;
+  margin-left: 1.5%;
   border-radius: 8px;
   border: solid 1px var(--pale9);
   padding: 10px;
   font-size: 2.4em;
   text-align: left;
+}
+
+.currency-box-inside {
+  display: flex;
+  flex-direction: column;
 }
 
 .currencySymbol1 {
