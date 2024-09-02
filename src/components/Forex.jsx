@@ -87,8 +87,7 @@ class Forex extends Component {
       <>
       <div className="app-frame">
         <Navbar />
-        <h3>{window.location.href}</h3>
-        <h1>{ this.state.coin } CURRENCY PAGE : { this.state.coin } </h1>
+        <span className="page-heading-text">{ this.state.coin } forex : { this.state.coin } : {window.location.href} </span>
         <Layout>
           <div className="routes"></div>
         </Layout>
