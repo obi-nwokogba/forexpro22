@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
-import COLORS from "./Constants";
+import CONSTANTS from "./Constants";
 import { Navbar, Home, Currency, Forex } from "./components";
 import "./styles.css";
 import { Layout } from "antd";
@@ -51,7 +51,7 @@ class App extends Component {
             <span className="currencySymbol1">{coin.symbol}</span>
             <div
               style={{
-                color: coin.change > 0 ? COLORS.blue1 : COLORS.red1,
+                color: coin.change > 0 ? CONSTANTS.COLORS.blue1 : CONSTANTS.COLORS.red1,
               }}
             >
               {coin.change}%

@@ -40,22 +40,13 @@ export default function Home({ name }) {
   };
 
 
-  let options = {
-    method: "GET",
-    url: "https://coinranking1.p.rapidapi.com/coins",
-    params: {
-      referenceCurrencyUuid: "yhjMzLPhuIDl",
-      timePeriod: "24h",
-      tiers: "1",
-      orderBy: "marketCap",
-      orderDirection: "desc",
-      limit: "100",
-      offset: "0",
-    },
+  const options = {
+    method: 'GET',
+    url: 'https://twelve-data1.p.rapidapi.com/market_movers/crypto',
     headers: {
-      "x-rapidapi-key": "de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6",
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-    },
+      'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
+      'x-rapidapi-host': 'twelve-data1.p.rapidapi.com'
+    }
   };
 
 
@@ -64,7 +55,9 @@ export default function Home({ name }) {
     try {
 
       const response = axios.request(options).then((response) => {
-        setCoinData(response.data.data.coins.map((coin) => (
+
+        console.log(response);
+        setCoinData(response.map((coin) => (
           <CoinBox1
             coinName={coin.name}
             coinSymbol={coin.symbol}

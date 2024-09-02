@@ -106,13 +106,12 @@ a:hover {
 }
 
 .page-heading-text {
-  color: red;
   font-size: 3em;
   color: var(--pale2);
   font-weight: 600;
   letter-spacing: -2px;
+  padding-top: 20px;
 }
-
 
 .search-container {
   margin-left: 20px;

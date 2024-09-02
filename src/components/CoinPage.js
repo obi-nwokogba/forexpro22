@@ -1,14 +1,14 @@
-import CONSTANTS from "./Constants";
+import COLORS from "../Constants";
 import "../styles.css";
 
-export default function CoinBox1(props) {
+export default function CoinPage(props) {
   return <div className='currency-box-1'>
     <div className="currency-box-inside">
       <div className="text3"> {props.coinName} <span className="lighter">{props.coinSymbol}</span></div>
       <div className="text4">${Number(props.coinPrice).toFixed(5)}</div>
       <div className="text7"
         style={{
-          color: props.coinPriceChange > 0 ? CONSTANTS.COLORS.blue1 : CONSTANTS.COLORS.red1,
+          color: props.coinPriceChange > 0 ? COLORS.blue1 : COLORS.red1,
         }}
       >
 

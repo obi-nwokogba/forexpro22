@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Layout } from "antd";
 
-import { Navbar, CoinBox1 } from "./";
+import { Navbar, CoinPage } from "./";
 import { useParams } from 'react-router-dom';
 
 import {
@@ -16,7 +16,7 @@ import "../styles.css";
 
 export default function Forex({ name }) {
 
-  let interval = 7000;
+  let interval = 700000;
 
   const [coinData, setCoinData] = useState([]);
   const [coin, setCoin] = useState('');
@@ -25,58 +25,46 @@ export default function Forex({ name }) {
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
+  const options = {
+    method: 'GET',
+    url: 'https://twelve-data1.p.rapidapi.com/quote',
+    params: {
+      symbol: 'EUR/USD',
+      outputsize: '30',
+      format: 'json',
+      interval: '1day'
+    },
+    headers: {
+      'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
+      'x-rapidapi-host': 'twelve-data1.p.rapidapi.com'
+    }
+  };
+
+
   const setFetchDataInterval = (interval) => {
     // Clear old interval
     if (fetchDataIntervalId.current) {
       clearInterval(fetchDataIntervalId.current);
-      fetchDataIntervalId.current = undefined;
+      fetchDataIntervalId.current = 700000;
     }
 
     // Set new interval
     if (interval > 0) {
       fetchDataIntervalId.current = setInterval(() => {
         setFetchDataTrigger(Date.now());
-      }, interval);
+      }, 700000);
     }
   };
 
 
-  let options = {
-    method: "GET",
-    url: "https://coinranking1.p.rapidapi.com/coins",
-    params: {
-      referenceCurrencyUuid: "yhjMzLPhuIDl",
-      timePeriod: "24h",
-      tiers: "1",
-      orderBy: "marketCap",
-      orderDirection: "desc",
-      limit: "100",
-      offset: "0",
-    },
-    headers: {
-      "x-rapidapi-key": "de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6",
-      "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-    },
-  };
-
-
   useEffect(() => {
-
     try {
-
       const response = axios.request(options).then((response) => {
-
-        setJoke(response.data.data.coins[0].name);
-        setCoinData(response.data.data.coins.map((coin) => (
-          <CoinBox1
-            coinName={coin.name}
-            coinSymbol={coin.symbol}
-            coinPrice={coin.price}
-            coinPriceChange={coin.change} />
-        )));
-
+        console.log(`Response is: ${JSON.stringify(response)}`);
+        setJoke(response.data.name);
+        setCoinData(response.data);
       }).catch((err) => console.warn(err));
-      console.log(response.data.data.coins);
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -90,18 +78,18 @@ export default function Forex({ name }) {
     <div className="app-frame">
       <Navbar />
       <span className="page-heading-text">
-        {/* { this.state.coin }  */}
-
-        forex :
-        {coinData.length}
-        : {window.location.href} </span>
-      <span className="page-heading-text">{joke}</span>
+        {coinData.symbol} &middot;&nbsp;
+        {coinData.name} </span>
+      <span className="page-heading-text">{coinData.symbol}</span>
       <Layout>
         <div className="routes"></div>
       </Layout>
 
       <div className="app-container">
-        {coinData}
+        {coinData.name}
+        <CoinPage
+          coinName={coinData.name}
+          coinSymbol={coinData.symbol} />
       </div>
     </div>
   </>

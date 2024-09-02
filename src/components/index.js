@@ -10,3 +10,4 @@ export { default as Currency } from "./Currency";
 export { default as Footer } from "./Footer";
 export { default as Forex } from "./Forex";
 export { default as CoinBox1 } from "./CoinBox1";
+export { default as CoinPage } from "./CoinPage";
