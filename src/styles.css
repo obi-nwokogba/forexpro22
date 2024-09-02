@@ -109,8 +109,18 @@ a:hover {
   font-size: 3em;
   color: var(--pale2);
   font-weight: 600;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   padding-top: 20px;
+  display: block;
+}
+
+.page-heading-text-2 {
+  font-size: 3em;
+  color: var(--pale2);
+  font-weight: 600;
+  letter-spacing: -1px;
+  padding-top: 20px;
+  display: block;
 }
 
 .search-container {
@@ -516,4 +526,11 @@ h3.swatchHeader {
   padding-top: 30px;
   padding-bottom: 200px;
   width: 1200px;
+}
+
+.tag1 {
+  background-color: var(--pale6);
+  color: var(--pale8);
+  padding: 10px;
+  border-radius: 10px;
 }

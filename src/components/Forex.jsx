@@ -4,17 +4,17 @@ import { Layout } from "antd";
 
 import { Navbar, CoinPage } from "./";
 import { useParams } from 'react-router-dom';
+import { getRealSymbol } from '../Utils';
 
-import {
-  BrowserRouter,
-  Routes, // instead of "Switch"
-  Route,
-} from "react-router-dom";
-
+import CONSTANTS from "../Constants";
 import "../styles.css";
 
 
 export default function Forex({ name }) {
+  const { urlSymbol } = useParams();
+  console.log(urlSymbol);
+  const tickerSymbol = getRealSymbol(urlSymbol);
+  console.log(tickerSymbol);
 
   let interval = 700000;
 
@@ -29,7 +29,7 @@ export default function Forex({ name }) {
     method: 'GET',
     url: 'https://twelve-data1.p.rapidapi.com/quote',
     params: {
-      symbol: 'EUR/USD',
+      symbol: tickerSymbol,
       outputsize: '30',
       format: 'json',
       interval: '1day'
@@ -77,20 +77,11 @@ export default function Forex({ name }) {
   return <>
     <div className="app-frame">
       <Navbar />
-      <span className="page-heading-text">
-        {coinData.symbol} &middot;&nbsp;
-        {coinData.name} </span>
-      <span className="page-heading-text">{coinData.symbol}</span>
-      <Layout>
-        <div className="routes"></div>
-      </Layout>
-
-      <div className="app-container">
-        {coinData.name}
-        <CoinPage
-          coinName={coinData.name}
-          coinSymbol={coinData.symbol} />
-      </div>
+      <CoinPage
+        coinName={coinData.name}
+        coinSymbol={coinData.symbol}
+        coinPriceChange={coinData.percent_change}
+        coinPrice={coinData.open} />
     </div>
   </>
 }

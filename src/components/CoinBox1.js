@@ -1,4 +1,4 @@
-import CONSTANTS from "./Constants";
+import CONSTANTS from "../Constants";
 import "../styles.css";
 
 export default function CoinBox1(props) {

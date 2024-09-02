@@ -8,7 +8,6 @@ const CONSTANTS = {
     eurusd: "EUR/USD",
     eurchf: "EUR/CHF"
   }
-
 }
 
 export default CONSTANTS;
