@@ -17,7 +17,7 @@ export default function Forex({ name }) {
   const tickerSymbol = getRealSymbol(urlSymbol);
   console.log(tickerSymbol);
 
-  let interval = 700000;
+  let interval = 6000;
 
   const [coinData, setCoinData] = useState([]);
   const [coin, setCoin] = useState('');
@@ -46,14 +46,14 @@ export default function Forex({ name }) {
     // Clear old interval
     if (fetchDataIntervalId.current) {
       clearInterval(fetchDataIntervalId.current);
-      fetchDataIntervalId.current = 700000;
+      fetchDataIntervalId.current = 6000;
     }
 
     // Set new interval
     if (interval > 0) {
       fetchDataIntervalId.current = setInterval(() => {
         setFetchDataTrigger(Date.now());
-      }, 700000);
+      }, 6000);
     }
   };
 
