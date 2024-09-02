@@ -59,19 +59,19 @@ a:hover {
 .topmost-popular-nav {
   text-align: left;
   margin: 0 auto;
+  margin-top: 20px;
   display: block;
   border-bottom: solid 1px var(--pale8);
+  padding-bottom: 20px;
 }
 
 .topmost-nav-link {
   border-right: solid 1px var(--pale8);
-  padding: 20px;
+  padding: 15px;
   text-decoration: none;
-  color: var(--gray00);
-  font-size: 0.9em;
+  color: var(--pale2);
+  font-size: 1.05em;
   font-weight: 500;
-  margin-top: 20px;
-  margin-bottom: -20px;
 }
 
 .topmost-nav-link:hover {
@@ -79,7 +79,7 @@ a:hover {
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  background-color: var(--pale10);
+  background-color: var(--pale000);
 }
 
 .nav-container {
@@ -182,7 +182,7 @@ h3.swatchHeader {
 .text3 {
   font-weight: 600;
   color: var(--pale2);
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 .text4 {
@@ -215,12 +215,28 @@ h3.swatchHeader {
   font-size: 0.7em;
 }
 
+.bold {
+  font-weight: 600 !important;
+}
+
 .lighter {
   opacity: 0.5;
 }
 
 .lighter2 {
   opacity: 0.2;
+}
+
+.up-arrow {
+  max-width: 20px;
+  margin-right: 10px;
+  fill: var(--blue2) !important;
+}
+
+.down-arrow {
+  max-width: 20px;
+  margin-right: 10px;
+  fill: var(--red1) !important;
 }
 
 .colorHistoryText {
@@ -474,11 +490,17 @@ h3.swatchHeader {
   width: 29.5%;
   display: inline-block;
   margin-left: 1.5%;
+  margin-bottom: 20px;
   border-radius: 8px;
   border: solid 1px var(--pale9);
   padding: 10px;
   font-size: 2.4em;
   text-align: left;
+  line-height: 35px;
+  height: 100px;
+  max-height: 100px;
+  background-color: rgba(255, 255, 255, 0.25);
+
 }
 
 .currency-box-inside {
