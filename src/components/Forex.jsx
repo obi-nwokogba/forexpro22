@@ -82,7 +82,8 @@ export default function Forex({ name }) {
         coinName={coinData.name}
         coinSymbol={coinData.symbol}
         coinPriceChange={coinData.percent_change}
-        coinPrice={coinData.open} />
+        coinPrice={coinData.open}
+        tickerSymbol={tickerSymbol} />
     </div>
   </>
 }
