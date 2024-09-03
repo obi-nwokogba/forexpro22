@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-// import { Line } from '@ant-design/plots';
+import { Line } from '@ant-design/plots';
 import { ResponsiveLine } from '@nivo/line'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import COLORS from "../Constants";
 import "../styles.css";
-
-import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default function CoinPage(props) {
 

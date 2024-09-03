@@ -9,10 +9,10 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 // import { AudioOutlined } from "@ant-design/icons";
-import { Input, Space } from "antd";
+
+import { Search } from "./";
 
 const Navbar = () => {
-  const { Search } = Input;
 
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
@@ -47,16 +47,8 @@ const Navbar = () => {
       </div>
       <div className="nav-container">
         <div className="logo-container">forexpro22</div>
-        <div className="search-container">
-          <Space direction="vertical">
-            <Search
-              placeholder="search currency, coin, symbol"
-              allowClear
-              // onSearch={onSearch}
-              style={{ width: 304 }}
-            />
-          </Space>
-        </div>
+        <Search />
+
       </div>
     </>
   );

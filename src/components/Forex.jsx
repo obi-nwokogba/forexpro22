@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Layout } from "antd";
-
-import { Navbar, CoinPage } from "./";
 import { useParams } from 'react-router-dom';
-import { getRealSymbol } from '../Utils';
 
+import { getRealSymbol } from '../Utils';
+import { Navbar, CoinPage } from "./";
 import CONSTANTS from "../Constants";
 import "../styles.css";
 

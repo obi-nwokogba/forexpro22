@@ -26,7 +26,7 @@ class App extends Component {
       method: 'GET',
       url: 'https://twelve-data1.p.rapidapi.com/quote',
       params: {
-        symbol: tickerSymbol,
+        symbol: 'EUR/USD',
         outputsize: '30',
         format: 'json',
         interval: '1day'
