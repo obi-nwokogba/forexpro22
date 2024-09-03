@@ -23,21 +23,18 @@ class App extends Component {
 
   async getJoke() {
     let options = {
-      method: "GET",
-      url: "https://coinranking1.p.rapidapi.com/coins",
+      method: 'GET',
+      url: 'https://twelve-data1.p.rapidapi.com/quote',
       params: {
-        referenceCurrencyUuid: "yhjMzLPhuIDl",
-        timePeriod: "24h",
-        tiers: "1",
-        orderBy: "marketCap",
-        orderDirection: "desc",
-        limit: "50",
-        offset: "0",
+        symbol: tickerSymbol,
+        outputsize: '30',
+        format: 'json',
+        interval: '1day'
       },
       headers: {
-        "x-rapidapi-key": "de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6",
-        "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-      },
+        'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
+        'x-rapidapi-host': 'twelve-data1.p.rapidapi.com'
+      }
     };
 
     try {
