@@ -322,15 +322,24 @@ h3.swatchHeader {
   align-items: stretch;
 }
 
-.footercontainer {
-  border-top: solid 2px rgba(173, 173, 173, 0.22);
+.footer-container {
   padding-top: 20px;
   margin-top: 60px;
-  font-size: 0.8em;
+  font-size: 0.9em;
+  font-weight: 400;
   text-align: left;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 1;
   line-height: 1.2em;
+  background-color: var(--pale1);
+  color: var(--pale8);
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-container>div {
+  display: flex;
+  flex-direction: column;
 }
 
 .footercontainer>a {

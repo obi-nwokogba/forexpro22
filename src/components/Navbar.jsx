@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { Button, Menu, Typography, Avatar } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
@@ -8,7 +7,6 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
-// import { AudioOutlined } from "@ant-design/icons";
 
 import { Search } from "./";
 
@@ -41,6 +39,7 @@ const Navbar = () => {
         <Link to="/" className="topmost-nav-link">Home</Link>
         <Link to="/forex/btcusd" className="topmost-nav-link">Bitcoin</Link>
         <Link to="/forex/ethusd" className="topmost-nav-link">Ethereum</Link>
+        <Link to="/forex/bnbusd" className="topmost-nav-link">Binance</Link>
         <Link to="/forex/eurusd" className="topmost-nav-link">EUR/USD</Link>
         <Link to="/forex/usdjpy" className="topmost-nav-link">USD/JPY</Link>
         <Link to="/forex/usdchf" className="topmost-nav-link">USD/CHF</Link>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from 'react-router-dom';
 
 import { getRealSymbol } from '../Utils';
-import { Navbar, CoinPage } from "./";
+import { CoinPage, Footer, Navbar } from "./";
 import CONSTANTS from "../Constants";
 import "../styles.css";
 
@@ -83,5 +83,6 @@ export default function Forex({ name }) {
         coinPrice={coinData.open}
         tickerSymbol={tickerSymbol} />
     </div>
+    <Footer />
   </>
 }

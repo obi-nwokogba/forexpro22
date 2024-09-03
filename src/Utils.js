@@ -13,8 +13,11 @@ export const CONSTANTS2 = {
     gbpjpy: { ticker: "GBP/JPY", name: "", keywords: "Aussie" },
     usdchf: { ticker: "USD/CHF", name: "", keywords: "Aussie" },
     usdjpy: { ticker: "USD/JPY", name: "", keywords: "Aussie" },
-    btcusd: { ticker: "BTC/USD", name: "Bitcoin/US Dollar", keywords: "Aussie" },
-    ethusd: { ticker: "ETH/USD", name: "Ethereum/US Dollar", keywords: "Aussie" },
+    bnbusd: { ticker: "BNB/USD", name: "Binance Coin/US Dollar", keywords: "Binance" },
+    btcusd: { ticker: "BTC/USD", name: "Bitcoin/US Dollar", keywords: "Bitcoin" },
+    ethusd: { ticker: "ETH/USD", name: "Ethereum/US Dollar", keywords: "Ethereum 2.0" },
+    solusd: { ticker: "SOL/USD", name: "Solana/US Dollar", keywords: "Aussie" },
+    trxusd: { ticker: "TRX/USD", name: "Tron/US Dollar", keywords: "Tron" },
   }
 }
 
