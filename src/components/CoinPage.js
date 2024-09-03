@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Line } from '@ant-design/plots';
-import { ResponsiveLine } from '@nivo/line'
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -10,7 +9,7 @@ import "../styles.css";
 
 export default function CoinPage(props) {
 
-  // const [lineChartConfig, setLineChartConfig] = ([]);
+  const [lineChartConfig, setLineChartConfig] = ([]);
   const [timeSeries, setTimeSeries] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
@@ -21,7 +20,7 @@ export default function CoinPage(props) {
     method: 'GET',
     url: 'https://twelve-data1.p.rapidapi.com/time_series',
     params: {
-      outputsize: '30',
+      outputsize: '40',
       symbol: tickerSymbol,
       interval: '1day',
       format: 'json'
@@ -32,6 +31,17 @@ export default function CoinPage(props) {
     }
   };
 
+  const data = [
+    { year: '1991', value: 3 },
+    { year: '1992', value: 4 },
+    { year: '1993', value: 3.5 },
+    { year: '1994', value: 5 },
+    { year: '1995', value: 4.9 },
+    { year: '1996', value: 6 },
+    { year: '1997', value: 7 },
+    { year: '1998', value: 9 },
+    { year: '1999', value: 13 },
+  ];
 
   const setFetchDataInterval = (interval) => {
     // Clear old interval
@@ -47,23 +57,6 @@ export default function CoinPage(props) {
       }, 700000);
     }
   };
-
-
-  let data = [
-    { year: '1991', value: 3 },
-    { year: '1992', value: 4 },
-    { year: '1993', value: 3.5 },
-    { year: '1994', value: 5 },
-    { year: '1995', value: 4.9 },
-    { year: '1996', value: 6 },
-    { year: '1997', value: 7 },
-    { year: '1998', value: 9 },
-    { year: '1999', value: 13 },
-  ];
-
-
-  data = [{ "year": "02", "value": 1.1046 }, { "year": "30", "value": 1.10766 }, { "year": "29", "value": 1.11198 }, { "year": "28", "value": 1.11835 }, { "year": "27", "value": 1.11599 }, { "year": "26", "value": 1.11914 }, { "year": "23", "value": 1.11089 }, { "year": "22", "value": 1.11506 }, { "year": "21", "value": 1.11293 }, { "year": "20", "value": 1.10837 }, { "year": "19", "value": 1.10253 }, { "year": "16", "value": 1.09736 }, { "year": "15", "value": 1.10122 }, { "year": "14", "value": 1.09906 }, { "year": "13", "value": 1.09306 }, { "year": "12", "value": 1.0913 }, { "year": "09", "value": 1.09162 }, { "year": "08", "value": 1.0922 }, { "year": "07", "value": 1.09302 }, { "year": "06", "value": 1.09502 }, { "year": "05", "value": 1.09065 }, { "year": "02", "value": 1.07918 }, { "year": "01", "value": 1.08265 }, { "year": "31", "value": 1.08137 }, { "year": "30", "value": 1.08229 }, { "year": "29", "value": 1.08562 }, { "year": "26", "value": 1.08457 }, { "year": "25", "value": 1.08412 }, { "year": "24", "value": 1.08533 }, { "year": "23", "value": 1.08918 }];
-
 
   useEffect(() => {
     try {
@@ -82,6 +75,29 @@ export default function CoinPage(props) {
           dataArray2.push({ x: timePeriod.datetime, y: Number(timePeriod.open) });
         });
 
+
+        // for Ant Charts
+        setLineChartConfig({
+          data,
+          xField: 'year',
+          yField: 'value',
+          point: {
+            shapeField: 'square',
+            sizeField: 4,
+          },
+          interaction: {
+            tooltip: {
+              marker: false,
+            },
+          },
+          style: {
+            lineWidth: 2,
+          },
+        });
+
+
+
+        // Delete?
         setTimeSeries([{
           "id": 'Somesteing',
           "color": "hsl(43, 70%, 50%)",
@@ -186,78 +202,11 @@ export default function CoinPage(props) {
 
     <div className='currency-page-box'>
 
-      <span className="text1">  {timeSeries.length}</span>
+      <span className="text1">timeSeries.length: {timeSeries.length}</span>
+      <br />
+      <span className="text1">data.length: {data.length}</span>
 
-
-      <ResponsiveLine
-        data={dataSample}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        xScale={{ type: 'point' }}
-        yScale={{
-          type: 'linear',
-          min: 'auto',
-          max: 'auto',
-          stacked: true,
-          reverse: false
-        }}
-        yFormat=" >-.2f"
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'transportation',
-          legendOffset: 36,
-          legendPosition: 'middle',
-          truncateTickAt: 0
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'count',
-          legendOffset: -40,
-          legendPosition: 'middle',
-          truncateTickAt: 0
-        }}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabel="data.yFormatted"
-        pointLabelYOffset={-12}
-        enableTouchCrosshair={true}
-        useMesh={true}
-        legends={[
-          {
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 100,
-            translateY: 0,
-            itemsSpacing: 0,
-            itemDirection: 'left-to-right',
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: 'circle',
-            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                  itemBackground: 'rgba(0, 0, 0, .03)',
-                  itemOpacity: 1
-                }
-              }
-            ]
-          }
-        ]}
-      />
-
-      {timeSeries.length}
+      <Line {...lineChartConfig} />
 
 
     </div></>

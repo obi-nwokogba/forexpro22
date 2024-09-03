@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Input, Space } from "antd";
 
-import { CONSTANTS2 } from '../Utils';
+import { FOREXSYMBOLS, CONSTANTS2 } from '../Utils';
 
 
 export default function Search() {
 
   let productList = [];
-  for (const [key, value] of Object.entries(CONSTANTS2.FOREXSYMBOLS)) {
+  for (const [key, value] of Object.entries(FOREXSYMBOLS)) {
     value.key = key;
     productList.push(value);
   }

@@ -36,6 +36,7 @@ const Navbar = () => {
   return (
     <>
       <div className="topmost-popular-nav">
+        <Link to="/" className="topmost-nav-link">{window.innerWidth}px</Link>
         <Link to="/" className="topmost-nav-link">Home</Link>
         <Link to="/forex/btcusd" className="topmost-nav-link">Bitcoin</Link>
         <Link to="/forex/ethusd" className="topmost-nav-link">Ethereum</Link>
@@ -43,6 +44,7 @@ const Navbar = () => {
         <Link to="/forex/eurusd" className="topmost-nav-link">EUR/USD</Link>
         <Link to="/forex/usdjpy" className="topmost-nav-link">USD/JPY</Link>
         <Link to="/forex/usdchf" className="topmost-nav-link">USD/CHF</Link>
+
       </div>
       <div className="nav-container">
         <div className="logo-container">forexpro22</div>

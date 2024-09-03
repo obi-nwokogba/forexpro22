@@ -325,6 +325,7 @@ h3.swatchHeader {
 .footer-container {
   padding-top: 20px;
   margin-top: 60px;
+  margin: 0 auto;
   font-size: 0.9em;
   font-weight: 400;
   text-align: left;
@@ -340,11 +341,24 @@ h3.swatchHeader {
 .footer-container>div {
   display: flex;
   flex-direction: column;
+  margin-left: 40px;
 }
 
-.footercontainer>a {
-  color: gray;
+.footer-link {
+  border-bottom: dotted 1px var(--pale3);
+  padding: 15px;
+  text-decoration: none;
+  color: var(--pale8);
+  font-size: 1.05em;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: var(--pale9);
   font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: var(--pale3);
 }
 
 .sliderControl {
@@ -592,3 +606,45 @@ h3.swatchHeader {
 .individual-search-result:hover {
   background-color: rgba(255, 255, 255, 0.794);
 }
+
+
+/* FIRST BREAKPOINT */
+@media all and (max-width: 600px) {
+
+  .page-heading-text,
+  .page-heading-text-2 {
+    font-size: 2.2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+
+/* SECOND BREAKPOINT */
+@media all and (max-width: 900px) {
+  body {
+    padding-left: 15px;
+  }
+
+  .page-heading-text,
+  .page-heading-text-2 {
+    font-size: 2.2em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+
+/* THIRD BREAKPOINT */
+@media all and (max-width: 1200px) {
+  body {
+    padding-left: 15px;
+  }
+}
+
+/* FOURTH BREAKPOINT */
+@media all and (max-width: 1600px) {}
+
+
+/* FIFTH BREAKPOINT */
+@media all and (min-width: 1601px) {}

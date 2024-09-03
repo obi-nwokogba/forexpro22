@@ -8,12 +8,13 @@ import CONSTANTS from "../Constants";
 import "../styles.css";
 
 
+
 export default function Forex({ name }) {
   let { urlSymbol } = useParams();
   urlSymbol = urlSymbol || 'eurusd';
   console.log(urlSymbol);
   const tickerSymbol = getRealSymbol(urlSymbol);
-  console.log(tickerSymbol);
+  console.log(`tickerSymbol is: `, tickerSymbol);
 
   let interval = 6000;
 
