@@ -8,7 +8,8 @@ export default function Search() {
 
   let productList = [];
   for (const [key, value] of Object.entries(CONSTANTS2.FOREXSYMBOLS)) {
-    productList.push(`${value} ${key}`);
+    value.key = key;
+    productList.push(value);
   }
   const { Search } = Input;
 
@@ -16,24 +17,35 @@ export default function Search() {
   const [searchVal, setSearchVal] = useState("");
   const [searchResult, setSearchResult] = useState([]);
 
+
   function handleSearchClick() {
-    if (searchVal === "") { setProducts(productList); return; }
-    const filterBySearch = productList.filter((item) => {
-      if (item.toLowerCase()
-        .includes(searchVal.toLowerCase())) { return item; }
-    })
-    setProducts(filterBySearch);
+    /*
+  if (searchVal === "") { setProducts(productList); return; }
+  const filterBySearch = productList.filter((item) => {
+    if (item.toLowerCase()
+      .includes(searchVal.toLowerCase())) { return item; }
+  })
+  setProducts(filterBySearch);*/
   }
 
   function handleSearchType(e) {
     let currentSearchText = e.target.value.toString();
+    setSearchVal(currentSearchText);
     console.log(`currentSearchText is ${currentSearchText}`);
 
     if (currentSearchText === "") { setProducts([]); return; }
 
     const filterBySearch = productList.filter((item) => {
-      return item.toLowerCase().includes(currentSearchText);
+      if (item.ticker.toLowerCase().includes(currentSearchText) ||
+        item.key.toLowerCase().includes(currentSearchText)) {
+        return item.ticker.toString();
+      }
+      /*
+      return (item.ticker.toLowerCase().includes(currentSearchText) ||
+        item.key.toLowerCase().includes(currentSearchText)
+      );*/
     });
+
     setSearchResult(filterBySearch);
     setProducts(filterBySearch);
   }
@@ -51,10 +63,13 @@ export default function Search() {
       />
     </Space>
     <br />
-    <div className="searchResultDisplay">
-      <span className="text6 block"> {productList.length} financial instruments monitored</span>
+    <div className="search-result-display"
+      style={{
+        display: searchResult.length ? 'flex' : 'none',
+      }}>
 
-      <span className="text6">{products.length} Search Results</span>
+      {/* <span className="text6">{8} financial instruments monitored</span>
+      <span className="text6">{products.length} Search Results</span> */}
       <div>
 
         <br />
@@ -67,5 +82,5 @@ export default function Search() {
       </div>
     </div>
 
-  </div></>;
+  </div ></>;
 }
