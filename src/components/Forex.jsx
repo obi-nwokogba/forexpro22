@@ -19,9 +19,6 @@ export default function Forex({ name }) {
   let interval = 6000;
 
   const [coinData, setCoinData] = useState([]);
-  const [coin, setCoin] = useState('');
-  const [joke, setJoke] = useState('');
-  const [data, setData] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
@@ -60,8 +57,6 @@ export default function Forex({ name }) {
   useEffect(() => {
     try {
       const response = axios.request(options).then((response) => {
-        console.log(`Response is: ${JSON.stringify(response)}`);
-        setJoke(response.data.name);
         setCoinData(response.data);
       }).catch((err) => console.warn(err));
       console.log(response);
@@ -86,4 +81,7 @@ export default function Forex({ name }) {
     </div>
     <Footer />
   </>
+
+
+
 }
