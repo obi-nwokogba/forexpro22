@@ -11,7 +11,7 @@ import "../styles.css";
 
 export default function Forex({ name }) {
   let { urlSymbol } = useParams();
-  urlSymbol = urlSymbol || 'eurusd';
+  urlSymbol = urlSymbol.toLowerCase() || 'eurusd';
   console.log(urlSymbol);
   const tickerSymbol = getRealSymbol(urlSymbol);
   console.log(`tickerSymbol is: `, tickerSymbol);

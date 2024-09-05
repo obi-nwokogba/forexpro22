@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { Input, Space } from "antd";
 
 import { FOREXSYMBOLS, CONSTANTS2 } from '../Utils';
@@ -65,6 +66,7 @@ export default function Search() {
       <Search
         placeholder="search currency, coin, symbol"
         allowClear
+        value={searchVal}
         onClear={clearSearch}
         onChange={handleSearchType}
         onInput={handleSearchType}
@@ -85,7 +87,8 @@ export default function Search() {
         <br />
         {products.map((product) => {
           return (
-            <div className="individual-search-result">{product.ticker} &middot; {product.name}</div>
+            <Link to={'/forex/' + product.key} className="individual-search-result" onClick={clearSearch}>
+              {product.ticker} &middot; {product.name}</Link>
           )
         })
         }

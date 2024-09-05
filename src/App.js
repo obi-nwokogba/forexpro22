@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Forex } from "./components";
+import { Forex, ForexHome } from "./components";
 import "./styles.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -10,9 +10,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Forex />}></Route>
+          <Route path="/" element={<ForexHome />}></Route>
           <Route path="/crypto/:urlSymbol" element={<Forex />}></Route>
           <Route path="/forex/:urlSymbol" element={<Forex />}></Route>
+          <Route path="/forex" element={<ForexHome />}></Route>
         </Routes>
       </BrowserRouter>
     );
