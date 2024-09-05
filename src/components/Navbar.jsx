@@ -41,6 +41,9 @@ const Navbar = () => {
         <Link to="/forex/bnbusd" className="topmost-nav-link">Binance</Link>
         <Link to="/forex/eurusd" className="topmost-nav-link">EUR/USD</Link>
         <Link to="/forex/usdjpy" className="topmost-nav-link">USD/JPY</Link>
+        <Link to="/forex/gbpusd" className="topmost-nav-link">GBP/USD</Link>
+        <Link to="/forex/audusd" className="topmost-nav-link">AUD/USD</Link>
+        <Link to="/forex/usdcad" className="topmost-nav-link">USD/CAD</Link>
         <Link to="/forex/usdchf" className="topmost-nav-link">USD/CHF</Link>
       </div>
       <div className="topmost-popular-nav">

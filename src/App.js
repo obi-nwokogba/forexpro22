@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ForexHome />}></Route>
+          <Route path="/" element={<Forex />}></Route>
           <Route path="/crypto/:urlSymbol" element={<Forex />}></Route>
           <Route path="/forex/:urlSymbol" element={<Forex />}></Route>
           <Route path="/forex" element={<ForexHome />}></Route>

@@ -19,9 +19,7 @@ export default function Currency({ name }) {
   let interval = 7000;
 
   const [coinData, setCoinData] = useState([]);
-  const [coin, setCoin] = useState('');
   const [joke, setJoke] = useState('');
-  const [data, setData] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 

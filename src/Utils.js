@@ -1,13 +1,11 @@
-export const CONSTANTS2 = {
-  COLORS: {
-    blue1: "#4371eb",
-    red1: "#ea7880",
-  }
+export const COLORS = {
+  blue1: "#4371eb",
+  red1: "#ea7880"
 };
 
-
 export let FOREXSYMBOLS = {
-  audusd: { ticker: "AUD/USD", name: "", keywords: "Aussie" },
+  audcad: { ticker: "AUD/CAD", name: "", keywords: "Aussie Austrailia" },
+  audusd: { ticker: "AUD/USD", name: "", keywords: "Aust" },
   euraud: { ticker: "EUR/AUD", name: "", keywords: "Aussie" },
   eurchf: { ticker: "EUR/CHF", name: "Euro / Swiss Franc", keywords: "Aussie" },
   eurjpy: { ticker: "EUR/JPY", name: "Japanese Yen", keywords: "Aussie" },
@@ -15,7 +13,8 @@ export let FOREXSYMBOLS = {
   gbpusd: { ticker: "GBP/USD", name: "", keywords: "Aussie" },
   gbpjpy: { ticker: "GBP/JPY", name: "", keywords: "Aussie" },
   nzdjpy: { ticker: "NZD/JPY", name: "", keywords: "Kiwi" },
-  usdchf: { ticker: "USD/CHF", name: "", keywords: "Aussie" },
+  usdchf: { ticker: "USD/CHF", name: "", keywords: "Dollar Switzerland Swiss Franc" },
+  usdcad: { ticker: "USD/CAD", name: "", keywords: "Canada Canadian Dollar" },
   usdjpy: { ticker: "USD/JPY", name: "", keywords: "Yen" },
   bchusd: { ticker: "BCH/USD", name: "Bitcoin Cash / US Dollar", keywords: "Bitcoin" },
   bnbusd: { ticker: "BNB/USD", name: "Binance Coin / US Dollar", keywords: "Binance" },

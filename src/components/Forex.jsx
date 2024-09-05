@@ -4,14 +4,12 @@ import { useParams } from 'react-router-dom';
 
 import { getRealSymbol } from '../Utils';
 import { CoinPage, Footer, Navbar } from "./";
-import CONSTANTS from "../Constants";
 import "../styles.css";
-
 
 
 export default function Forex({ name }) {
   let { urlSymbol } = useParams();
-  urlSymbol = urlSymbol.toLowerCase() || 'eurusd';
+  urlSymbol = urlSymbol?.toLowerCase() || 'eurusd';
   console.log(urlSymbol);
   const tickerSymbol = getRealSymbol(urlSymbol);
   console.log(`tickerSymbol is: `, tickerSymbol);

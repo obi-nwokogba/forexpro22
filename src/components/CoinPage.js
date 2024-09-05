@@ -2,29 +2,29 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Line } from '@ant-design/plots';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import COLORS from "../Constants";
 import "../styles.css";
 
 export default function CoinPage(props) {
 
   const [lineChartConfig, setLineChartConfig] = useState([]);
-  const [lineChartConfig2, setLineChartConfig2] = useState([]);
+  const [timeInterval, setTimeInterval] = useState('1day');
   const [timeSeries, setTimeSeries] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
-  const [quoteData, setQuoteData] = useState([]);
   const fetchDataIntervalId = useRef();
 
   let tickerSymbol = props.tickerSymbol;
 
+
+  // outputsize is 1 to 1555
+  // timeinterval can be 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
   const options = {
     method: 'GET',
     url: 'https://twelve-data1.p.rapidapi.com/time_series',
     params: {
       outputsize: '40',
       symbol: tickerSymbol,
-      interval: '1day',
+      interval: timeInterval,
       format: 'json'
     },
     headers: {
@@ -66,30 +66,22 @@ export default function CoinPage(props) {
     }
   };
 
-  const data = [
-    { year: '1991', value: 3 },
-    { year: '1992', value: 4 },
-    { year: '1993', value: 3.5 },
-    { year: '1994', value: 5 },
-    { year: '1995', value: 4.9 },
-    { year: '1996', value: 6 },
-    { year: '1997', value: 7 },
-    { year: '1998', value: 9 },
-    { year: '1999', value: 13 },
+  let data = [
+    { year: '1991', price: 3 },
   ];
 
   const setFetchDataInterval = (interval) => {
     // Clear old interval
     if (fetchDataIntervalId.current) {
       clearInterval(fetchDataIntervalId.current);
-      fetchDataIntervalId.current = 700000;
+      fetchDataIntervalId.current = 7000;
     }
 
     // Set new interval
     if (interval > 0) {
       fetchDataIntervalId.current = setInterval(() => {
         setFetchDataTrigger(Date.now());
-      }, 700000);
+      }, 7000);
     }
   };
 
@@ -97,48 +89,31 @@ export default function CoinPage(props) {
     try {
       const response = axios.request(options).then((response) => {
 
-        // console.log(`RESPONSE TICKER SYMBOL TIME SERIES is: ${JSON.stringify(response)}`);
-        // console.log(`${JSON.stringify(response)}`);
-
+        setFetchDataTrigger(7000);
         let arrayOfTimeSeries = response.data.values;
-        console.log(`arrayOfTimeSeries ` + arrayOfTimeSeries);
+        console.log(`arrayOfTimeSeries ` + JSON.stringify(arrayOfTimeSeries));
 
-        let year = 2000;
+        let year = 3000;
 
-
-        let dataArray2 = [];
+        let dataArray = [];
+        data = [];
         arrayOfTimeSeries.forEach(timePeriod => {
-          dataArray2.push({ x: timePeriod.datetime, value: Number(timePeriod.open) });
+          year++;
+          // dataArray2.push({ 'year': timePeriod.datetime, value: Number(timePeriod.open) });
+          data.push({ 'day': timePeriod.datetime, price: Number(timePeriod.open) });
         });
 
+        setTimeSeries(dataArray);
 
-        // for Ant Charts
-        /*
-        setLineChartConfig2({
-          timeSeries,
-          xField: 'year',
-          yField: 'value',
-          point: {
-            shapeField: 'square',
-            sizeField: 4,
-          },
-          interaction: {
-            tooltip: {
-              marker: false,
-            },
-          },
-          style: {
-            lineWidth: 2,
-          },
-        }); */
-
+        console.log(`TimeSeries for the GRAPH is:`);
+        console.log(JSON.stringify(timeSeries));
 
         setLineChartConfig({
           data,
-          xField: 'year',
-          yField: 'value',
+          xField: 'day',
+          yField: 'price',
           point: {
-            shapeField: 'square',
+            shapeField: 'circle',
             sizeField: 4,
           },
           interaction: {
@@ -147,54 +122,15 @@ export default function CoinPage(props) {
             },
           },
           style: {
-            lineWidth: 2,
-          },
+            lineWidth: 4,
+          }
         });
-
-
-
-
-        // Delete?
-        setTimeSeries([{
-
-          "data": dataArray2
-        }]);
-
-        console.log('timeseries: ', JSON.stringify(timeSeries));
-
-
 
       }).catch((err) => console.warn(err));
       console.log(response);
     } catch (error) {
       console.error(error);
     }
-
-    /*
-        try {
-          const response2 = axios.request(options2).then((response2) => {
-
-            // console.log(`RESPONSE TICKER SYMBOL TIME SERIES is: ${JSON.stringify(response)}`);
-            // console.log(`${JSON.stringify(response)}`);
-
-            let arrayOfTimeSeries = response2.data.values;
-            console.log(`arrayOfTimeSeries line 180: ` + JSON.stringify(arrayOfTimeSeries));
-
-            let theYear = 2000;
-
-            let dataArray2 = [];
-            arrayOfTimeSeries.forEach(timePeriod => {
-              theYear++;
-              // timePeriod.datetime
-              dataArray2.push({ year: theYear, value: Number(timePeriod.open) });
-            });
-
-          }).catch((err) => console.warn(err));
-          console.log(response2);
-        } catch (error) {
-          console.error(error);
-        } */
-
 
     // Clean up for unmount to prevent memory leak
     return () => clearInterval(fetchDataIntervalId.current);
@@ -219,15 +155,18 @@ export default function CoinPage(props) {
       ${props.coinPrice} </span>
 
     <div className='currency-page-box'>
+      <div className="block">
 
-      <span className="text1">timeSeries.length: {timeSeries.length}</span>
-      <br />
-      <span className="text1">data.length: {data.length}</span>
+        {/* // 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month */}
+        <span className="button-link-2">5 min</span>
+        <span className="button-link-2">15 min</span>
+        <span className="button-link-2">30 min</span>
+        <span className="button-link-2">45 min</span>
+        <span className="button-link-2">1 hr</span>
+        <span className="button-link-2">2 hr</span>
+      </div>
 
       <Line {...lineChartConfig} />
-
-      {/* <Line {...lineChartConfig} /> */}
-
 
     </div></>
 }

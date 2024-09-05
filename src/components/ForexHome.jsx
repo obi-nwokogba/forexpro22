@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 
 import { getRealSymbol } from '../Utils';
 import { CoinPage, Footer, Navbar } from "./";
-import CONSTANTS from "../Constants";
 import "../styles.css";
-
 
 
 export default function ForexHome({ name }) {
