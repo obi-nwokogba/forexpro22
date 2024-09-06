@@ -13,3 +13,4 @@ export { default as ForexHome } from "./ForexHome";
 export { default as CoinBox1 } from "./CoinBox1";
 export { default as CoinPage } from "./CoinPage";
 export { default as Search } from "./Search";
+export { default as Watch } from "./Watch";
