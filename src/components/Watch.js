@@ -9,6 +9,7 @@ import "../styles.css";
 export default function Watch(props) {
 
   const [quoteData, setQuoteData] = useState([]);
+  const [fiftyTwoWeekPercent, setFiftyTwoWeekPercent] = useState(50.0);
   // const [lineChartConfig, setLineChartConfig] = useState([]);
   // const [timeInterval, setTimeInterval] = useState('1day');
   // const [timeSeries, setTimeSeries] = useState([]);
@@ -77,8 +78,53 @@ export default function Watch(props) {
       const response = axios.request(options).then((response) => {
 
         let rawQuoteData = response;
+        setQuoteData(response.data);
         console.log(`rawQuoteData:`);
         console.log(`${JSON.stringify(rawQuoteData)}`);
+
+
+
+        /*
+
+
+        {
+  "data": {
+    "symbol": "BTC/USD",
+    "name": "Bitcoin US Dollar",
+    "exchange": "Coinbase Pro",
+    "datetime": "2024-09-06",
+    "timestamp": 1725665290,
+    "open": "56156.82000",
+    "high": "56995.00000",
+    "low": "52530.00000",
+    "close": "53832.43000",
+    "previous_close": "56156.82000",
+    "change": "-2324.39000",
+    "percent_change": "-4.13911",
+    "rolling_1d_change": "-3.98256",
+    "rolling_7d_change": "-9.08542",
+    "rolling_change": "-3.98256",
+    "is_market_open": true,
+    "fifty_two_week": {
+      "low": "24930.29688",
+      "high": "73750.07031",
+      "low_change": "28902.13313",
+      "high_change": "-19917.64031",
+      "low_change_percent": "115.93176",
+      "high_change_percent": "-27.00694",
+      "range": "24930.296875 - 73750.070312"
+    }
+  },
+
+
+        */
+
+
+
+
+
+
+
 
         /*
         setFetchDataTrigger(7000);
@@ -133,8 +179,8 @@ export default function Watch(props) {
     <div className="app-frame">
       <Navbar />
       <span className="page-heading-text">
-        {props.coinSymbol} &middot;&nbsp;
-        {props.coinName} </span>
+        {quoteData.symbol} &middot;&nbsp;
+        {quoteData.name} </span>
 
       <span className="page-heading-text-2">
         <img
@@ -148,6 +194,25 @@ export default function Watch(props) {
         &nbsp;&nbsp;
 
         ${props.coinPrice} </span>
+
+
+
+      <span className="page-heading-text-3">
+        {quoteData.rolling_1d_change}% past 1 day
+      </span>
+
+      <span className="page-heading-text-3">
+        {quoteData.rolling_7d_change}% past 7 days
+      </span>
+
+      <span className="page-heading-text-3">
+        52 Week Low: $ {fiftyTwoWeekPercent}
+
+        <div className="fifty-two-week-outer">
+          <div className="fifty-two-week-inner"></div>
+        </div>
+
+      </span>
 
       <div className='currency-page-box'>
         <div className="block">
