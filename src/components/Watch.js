@@ -3,29 +3,31 @@ import axios from "axios";
 import { Line } from '@ant-design/plots';
 import React from 'react';
 
+import { Footer, Navbar } from "./";
 import "../styles.css";
 
 export default function Watch(props) {
 
-  const [lineChartConfig, setLineChartConfig] = useState([]);
-  const [timeInterval, setTimeInterval] = useState('1day');
-  const [timeSeries, setTimeSeries] = useState([]);
+  const [quoteData, setQuoteData] = useState([]);
+  // const [lineChartConfig, setLineChartConfig] = useState([]);
+  // const [timeInterval, setTimeInterval] = useState('1day');
+  // const [timeSeries, setTimeSeries] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
   let tickerSymbol = props.tickerSymbol;
-
+  tickerSymbol = 'BTC/USD';
 
   // outputsize is 1 to 1555
   // timeinterval can be 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
   const options = {
     method: 'GET',
-    url: 'https://twelve-data1.p.rapidapi.com/time_series',
+    url: 'https://twelve-data1.p.rapidapi.com/quote',
     params: {
-      outputsize: '40',
-      symbol: tickerSymbol,
-      interval: timeInterval,
-      format: 'json'
+      symbol: 'BTC/USD',
+      outputsize: '30',
+      format: 'json',
+      interval: '1day'
     },
     headers: {
       'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
@@ -50,21 +52,6 @@ export default function Watch(props) {
     }
   }; */
 
-  // TODO : Use 52 week data
-  const options2 = {
-    method: 'GET',
-    url: 'https://twelve-data1.p.rapidapi.com/quote',
-    params: {
-      symbol: 'AMZN',
-      outputsize: '30',
-      format: 'json',
-      interval: '1day'
-    },
-    headers: {
-      'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
-      'x-rapidapi-host': 'twelve-data1.p.rapidapi.com'
-    }
-  };
 
   let data = [
     { year: '1991', price: 3 },
@@ -89,6 +76,11 @@ export default function Watch(props) {
     try {
       const response = axios.request(options).then((response) => {
 
+        let rawQuoteData = response;
+        console.log(`rawQuoteData:`);
+        console.log(`${JSON.stringify(rawQuoteData)}`);
+
+        /*
         setFetchDataTrigger(7000);
         let arrayOfTimeSeries = response.data.values;
         console.log(`arrayOfTimeSeries ` + JSON.stringify(arrayOfTimeSeries));
@@ -124,7 +116,7 @@ export default function Watch(props) {
           style: {
             lineWidth: 4,
           }
-        });
+        }); */
 
       }).catch((err) => console.warn(err));
       console.log(response);
@@ -134,39 +126,47 @@ export default function Watch(props) {
 
     // Clean up for unmount to prevent memory leak
     return () => clearInterval(fetchDataIntervalId.current);
-  }, [options, options2, fetchDataTrigger, timeSeries, data]);
+  }, [options, fetchDataTrigger, quoteData, data]);
+
 
   return <>
-    <span className="page-heading-text">
-      {props.coinSymbol} &middot;&nbsp;
-      {props.coinName} </span>
+    <div className="app-frame">
+      <Navbar />
+      <span className="page-heading-text">
+        {props.coinSymbol} &middot;&nbsp;
+        {props.coinName} </span>
 
-    <span className="page-heading-text-2">
-      <img
-        src={props.coinPriceChange >= 0 ? '../up-arrow.svg' : '../up-arrow.svg'}
-        className={props.coinPriceChange >= 0 ? 'up-arrow' : 'down-arrow'}
-        alt="" />
+      <span className="page-heading-text-2">
+        <img
+          src={props.coinPriceChange >= 0 ? '../up-arrow.svg' : '../up-arrow.svg'}
+          className={props.coinPriceChange >= 0 ? 'up-arrow' : 'down-arrow'}
+          alt="" />
 
-      {props.coinPriceChange}%
+        {props.coinPriceChange}%
 
-      <span className="tag1">24h</span>
-      &nbsp;&nbsp;
+        <span className="tag1">24h</span>
+        &nbsp;&nbsp;
 
-      ${props.coinPrice} </span>
+        ${props.coinPrice} </span>
 
-    <div className='currency-page-box'>
-      <div className="block">
+      <div className='currency-page-box'>
+        <div className="block">
 
-        {/* // 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month */}
-        <span className="button-link-2">5 min</span>
-        <span className="button-link-2">15 min</span>
-        <span className="button-link-2">30 min</span>
-        <span className="button-link-2">45 min</span>
-        <span className="button-link-2">1 hr</span>
-        <span className="button-link-2">2 hr</span>
-      </div>
+          {/* // 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month */}
+          <span className="button-link-2">5 min</span>
+          <span className="button-link-2">15 min</span>
+          <span className="button-link-2">30 min</span>
+          <span className="button-link-2">45 min</span>
+          <span className="button-link-2">1 hr</span>
+          <span className="button-link-2">2 hr</span>
+        </div>
 
-      <Line {...lineChartConfig} />
+        {/*
+      <Line {...lineChartConfig} /> */}
 
-    </div></>
+      </div> </div>
+    <Footer />
+
+
+  </>
 }
