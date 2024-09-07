@@ -22,7 +22,7 @@ export default function CoinPage(props) {
     method: 'GET',
     url: 'https://twelve-data1.p.rapidapi.com/time_series',
     params: {
-      outputsize: '40',
+      outputsize: '100',
       symbol: tickerSymbol,
       interval: timeInterval,
       format: 'json'
@@ -49,22 +49,6 @@ export default function CoinPage(props) {
       "high_change_percent": "-12.38072", "range": "118.349998 - 201.199997"
     }
   }; */
-
-  // TODO : Use 52 week data
-  const options2 = {
-    method: 'GET',
-    url: 'https://twelve-data1.p.rapidapi.com/quote',
-    params: {
-      symbol: 'AMZN',
-      outputsize: '30',
-      format: 'json',
-      interval: '1day'
-    },
-    headers: {
-      'x-rapidapi-key': 'de9f03c511msh409345b99ecf623p16aa52jsnc3bf33da52c6',
-      'x-rapidapi-host': 'twelve-data1.p.rapidapi.com'
-    }
-  };
 
   let data = [
     { year: '1991', price: 3 },
@@ -93,16 +77,14 @@ export default function CoinPage(props) {
         let arrayOfTimeSeries = response.data.values;
         console.log(`arrayOfTimeSeries ` + JSON.stringify(arrayOfTimeSeries));
 
-        let year = 3000;
-
         let dataArray = [];
         data = [];
         arrayOfTimeSeries.forEach(timePeriod => {
-          year++;
-          // dataArray2.push({ 'year': timePeriod.datetime, value: Number(timePeriod.open) });
           data.push({ 'day': timePeriod.datetime, price: Number(timePeriod.open) });
         });
 
+        // Reverse
+        data.reverse();
         setTimeSeries(dataArray);
 
         console.log(`TimeSeries for the GRAPH is:`);
@@ -114,7 +96,7 @@ export default function CoinPage(props) {
           yField: 'price',
           point: {
             shapeField: 'circle',
-            sizeField: 4,
+            sizeField: 3,
           },
           interaction: {
             tooltip: {
@@ -134,7 +116,7 @@ export default function CoinPage(props) {
 
     // Clean up for unmount to prevent memory leak
     return () => clearInterval(fetchDataIntervalId.current);
-  }, [options, options2, fetchDataTrigger, timeSeries, data]);
+  }, [options, fetchDataTrigger, timeSeries, data]);
 
   return <>
     <span className="page-heading-text">

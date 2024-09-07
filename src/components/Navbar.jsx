@@ -48,8 +48,9 @@ const Navbar = () => {
       </div>
       <div className="topmost-popular-nav">
         <Link to="/" className="topmost-nav-link">{window.innerWidth}px</Link>
+        <Link to="/watch/eurusd" className="topmost-nav-link">Watch</Link>
         <Link to="/" className="topmost-nav-link">Home</Link>
-        <Link to="/forex/btcusd" className="topmost-nav-link">Forex</Link>
+        <Link to="/forexhome" className="topmost-nav-link">Forex</Link>
         <Link to="/forex/ethusd" className="topmost-nav-link">Cryptos</Link>
         <Link to="/forex/bnbusd" className="topmost-nav-link">Markets</Link>
       </div>

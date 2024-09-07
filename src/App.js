@@ -11,9 +11,11 @@ class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Watch />}></Route>
+          <Route path="/forex" element={<Forex />}></Route>
           <Route path="/crypto/:urlSymbol" element={<Forex />}></Route>
           <Route path="/forex/:urlSymbol" element={<Forex />}></Route>
-          <Route path="/forex" element={<ForexHome />}></Route>
+          <Route path="/watch/:urlSymbol" element={<Watch />}></Route>
+          <Route path="/forexhome" element={<ForexHome />}></Route>
         </Routes>
       </BrowserRouter>
     );

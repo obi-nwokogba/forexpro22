@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Gauge, Line } from '@ant-design/plots';
+import { Gauge } from '@ant-design/plots';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import { COLORS } from '../Utils';
+import { COLORS, getRealSymbol } from '../Utils';
 import { Footer, Navbar } from "./";
 import "../styles.css";
 
-export default function Watch(props) {
+export default function Watch() {
 
   const [quoteData, setQuoteData] = useState([]);
   const [fiftyTwoWeekPercent, setFiftyTwoWeekPercent] = useState(50.0);
@@ -15,8 +16,11 @@ export default function Watch(props) {
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
-  let tickerSymbol = props.tickerSymbol;
-  tickerSymbol = 'BTC/USD';
+  // let { urlSymbol } = useParams();
+  // let tickerSymbol = urlSymbol ? getRealSymbol(urlSymbol.toLowerCase()) : 'EUR/USD';
+  let tickerSymbol = 'EUR/USD';
+
+  // TODO : Read from Parameters and set Timer
 
   // outputsize is 1 to 1555
   // timeinterval can be 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month
@@ -24,7 +28,7 @@ export default function Watch(props) {
     method: 'GET',
     url: 'https://twelve-data1.p.rapidapi.com/quote',
     params: {
-      symbol: 'BTC/USD',
+      symbol: tickerSymbol,
       outputsize: '30',
       format: 'json',
       interval: '1day'
@@ -166,7 +170,7 @@ export default function Watch(props) {
 
     // Clean up for unmount to prevent memory leak
     return () => clearInterval(fetchDataIntervalId.current);
-  }, [options, fetchDataTrigger, quoteData, data]);
+  }, [options, fetchDataTrigger, quoteData, data, tickerSymbol]);
 
 
   return <>
@@ -201,24 +205,19 @@ export default function Watch(props) {
         52 Week Range: {fiftyTwoWeekPercent}%<br />
 
         <Gauge {...fiftyTwoWeekGaugeConfig} />
-
-
       </span >
 
       <div className='currency-page-box'>
         <div className="block">
 
           {/* // 1min, 5min, 15min, 30min, 45min, 1h, 2h, 4h, 1day, 1week, 1month */}
-          <span className="button-link-2">5 min</span>
+          {/* <span className="button-link-2">5 min</span>
           <span className="button-link-2">15 min</span>
           <span className="button-link-2">30 min</span>
           <span className="button-link-2">45 min</span>
           <span className="button-link-2">1 hr</span>
-          <span className="button-link-2">2 hr</span>
+          <span className="button-link-2">2 hr</span> */}
         </div>
-
-        {/*
-      <Line {...lineChartConfig} /> */}
 
       </div> </div >
     <Footer />
