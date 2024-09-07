@@ -82,7 +82,12 @@ export default function Watch(props) {
         console.log(`rawQuoteData:`);
         console.log(`${JSON.stringify(rawQuoteData)}`);
 
-
+        let current = quoteData.close;
+        let fiftyTwoLow = 1;
+        let fiftyTwoHigh = 100;
+        let fiftyTwoPercent = ((current - fiftyTwoLow) / (fiftyTwoHigh - fiftyTwoLow)) * 100;
+        fiftyTwoPercent = 50;
+        setFiftyTwoWeekPercent(fiftyTwoPercent);
 
         /*
 
@@ -209,10 +214,11 @@ export default function Watch(props) {
         52 Week Low: $ {fiftyTwoWeekPercent}
 
         <div className="fifty-two-week-outer">
-          <div className="fifty-two-week-inner"></div>
+          <div className="fifty-two-week-inner"
+            style={{ marginLeft: fiftyTwoWeekPercent + '%' }}>&nbsp;</div>
         </div>
 
-      </span>
+      </span >
 
       <div className='currency-page-box'>
         <div className="block">
@@ -229,7 +235,7 @@ export default function Watch(props) {
         {/*
       <Line {...lineChartConfig} /> */}
 
-      </div> </div>
+      </div> </div >
     <Footer />
 
 
