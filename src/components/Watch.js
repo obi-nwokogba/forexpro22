@@ -3,6 +3,7 @@ import axios from "axios";
 import { Line } from '@ant-design/plots';
 import React from 'react';
 
+import { COLORS } from '../Utils';
 import { Footer, Navbar } from "./";
 import "../styles.css";
 
@@ -10,9 +11,6 @@ export default function Watch(props) {
 
   const [quoteData, setQuoteData] = useState([]);
   const [fiftyTwoWeekPercent, setFiftyTwoWeekPercent] = useState(50.0);
-  // const [lineChartConfig, setLineChartConfig] = useState([]);
-  // const [timeInterval, setTimeInterval] = useState('1day');
-  // const [timeSeries, setTimeSeries] = useState([]);
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
@@ -86,7 +84,7 @@ export default function Watch(props) {
         let fiftyTwoLow = 1;
         let fiftyTwoHigh = 100;
         let fiftyTwoPercent = ((current - fiftyTwoLow) / (fiftyTwoHigh - fiftyTwoLow)) * 100;
-        fiftyTwoPercent = 50;
+        fiftyTwoPercent = 20;
         setFiftyTwoWeekPercent(fiftyTwoPercent);
 
         /*
@@ -215,7 +213,10 @@ export default function Watch(props) {
 
         <div className="fifty-two-week-outer">
           <div className="fifty-two-week-inner"
-            style={{ marginLeft: fiftyTwoWeekPercent + '%' }}>&nbsp;</div>
+            style={{
+              marginLeft: fiftyTwoWeekPercent + '%',
+              backgroundColor: fiftyTwoWeekPercent < 50 ? COLORS.red1 : COLORS.blue1
+            }}>&nbsp;</div>
         </div>
 
       </span >

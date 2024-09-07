@@ -5,9 +5,10 @@ html {
   background-color: var(--pale000);
   font-weight: 400;
 
-  --red1: #ea7880;
-  --blue1: #4371eb;
-  --blue2: #317af0;
+  --red1: ##d93f3f;
+  --red2: #de5959;
+  --blue1: #3b5bde;
+  --blue2: #748ae8;
 
   --gray2: #9da1a7;
   --gray1: #3d4043;
@@ -714,7 +715,6 @@ h3.swatchHeader {
   min-height: 20px;
   min-width: 10px;
   display: inline;
-  background-color: var(--blue1);
   border-radius: 10px;
 }
 

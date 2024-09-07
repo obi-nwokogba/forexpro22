@@ -1,6 +1,9 @@
+
 export const COLORS = {
-  blue1: "#4371eb",
-  red1: "#ea7880"
+  blue1: "#3B5BDE",
+  blue2: "#748ae8",
+  red1: "#d93f3f",
+  red2: "#de5959"
 };
 
 export let FOREXSYMBOLS = {
