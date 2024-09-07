@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { Line } from '@ant-design/plots';
+import { Gauge, Line } from '@ant-design/plots';
 import React from 'react';
 
 import { COLORS } from '../Utils';
@@ -11,6 +11,7 @@ export default function Watch(props) {
 
   const [quoteData, setQuoteData] = useState([]);
   const [fiftyTwoWeekPercent, setFiftyTwoWeekPercent] = useState(50.0);
+  const [fiftyTwoWeekGaugeConfig, setFiftyTwoWeekGaugeConfig] = useState({});
   const [fetchDataTrigger, setFetchDataTrigger] = useState(0);
   const fetchDataIntervalId = useRef();
 
@@ -34,20 +35,35 @@ export default function Watch(props) {
     }
   };
 
+
+
   // Get Detailed Price Quote
 
   /*{
     "symbol": "AMZN", "name": "Amazon.com Inc",
     "exchange": "NASDAQ", "mic_code": "XNGS",
-    "currency": "USD", "datetime": "2024-09-03", "timestamp": 1725393540, "open": "177.86000", "high": "178.25999",
-    "low": "175.25999", "close": "176.28999", "volume": "35815574", "previous_close": "178.50000",
-    "change": "-2.21001", "percent_change": "-1.23810", "average_volume": "30990617",
+    "currency": "USD",
+    "datetime": "2024-09-03",
+    "timestamp": 1725393540,
+    "open": "177.86000",
+    "high": "178.25999",
+    "low": "175.25999",
+    "close": "176.28999",
+    "volume": "35815574",
+    "previous_close": "178.50000",
+    "change": "-2.21001",
+    "percent_change": "-1.23810",
+    "average_volume": "30990617",
     "is_market_open": false,
     "fifty_two_week":
     {
-      "low": "118.35000", "high": "201.20000", "low_change": "57.93999",
-      "high_change": "-24.91000", "low_change_percent": "48.95648",
-      "high_change_percent": "-12.38072", "range": "118.349998 - 201.199997"
+      "low": "118.35000",
+      "high": "201.20000",
+      "low_change": "57.93999",
+      "high_change": "-24.91000",
+      "low_change_percent": "48.95648",
+      "high_change_percent": "-12.38072",
+      "range": "118.349998 - 201.199997"
     }
   }; */
 
@@ -81,11 +97,31 @@ export default function Watch(props) {
         console.log(`${JSON.stringify(rawQuoteData)}`);
 
         let current = quoteData.close;
-        let fiftyTwoLow = 1;
-        let fiftyTwoHigh = 100;
+        let fiftyTwoLow = quoteData.fifty_two_week.low;
+        let fiftyTwoHigh = quoteData.fifty_two_week.high;
         let fiftyTwoPercent = ((current - fiftyTwoLow) / (fiftyTwoHigh - fiftyTwoLow)) * 100;
-        fiftyTwoPercent = 20;
+        fiftyTwoPercent = Number(fiftyTwoPercent.toFixed(2));
         setFiftyTwoWeekPercent(fiftyTwoPercent);
+
+        let currentFiftyTwoWeekGaugeConfig = {
+          width: 360,
+          height: 360,
+          autoFit: true,
+          data: {
+            target: fiftyTwoPercent,
+            total: 100,
+            name: 'score',
+            thresholds: [0, 25, 50, 75, 100],
+          },
+          legend: false,
+          scale: {
+            color: {
+              range: [COLORS.red1, COLORS.red1, COLORS.red2, COLORS.blue2, COLORS.blue1],
+            },
+          },
+        };
+
+        setFiftyTwoWeekGaugeConfig(currentFiftyTwoWeekGaugeConfig);
 
         /*
 
@@ -118,54 +154,9 @@ export default function Watch(props) {
       "range": "24930.296875 - 73750.070312"
     }
   },
-
-
         */
 
 
-
-
-
-
-
-
-        /*
-        setFetchDataTrigger(7000);
-        let arrayOfTimeSeries = response.data.values;
-        console.log(`arrayOfTimeSeries ` + JSON.stringify(arrayOfTimeSeries));
-
-        let year = 3000;
-
-        let dataArray = [];
-        data = [];
-        arrayOfTimeSeries.forEach(timePeriod => {
-          year++;
-          // dataArray2.push({ 'year': timePeriod.datetime, value: Number(timePeriod.open) });
-          data.push({ 'day': timePeriod.datetime, price: Number(timePeriod.open) });
-        });
-
-        setTimeSeries(dataArray);
-
-        console.log(`TimeSeries for the GRAPH is:`);
-        console.log(JSON.stringify(timeSeries));
-
-        setLineChartConfig({
-          data,
-          xField: 'day',
-          yField: 'price',
-          point: {
-            shapeField: 'circle',
-            sizeField: 4,
-          },
-          interaction: {
-            tooltip: {
-              marker: false,
-            },
-          },
-          style: {
-            lineWidth: 4,
-          }
-        }); */
 
       }).catch((err) => console.warn(err));
       console.log(response);
@@ -187,37 +178,30 @@ export default function Watch(props) {
 
       <span className="page-heading-text-2">
         <img
-          src={props.coinPriceChange >= 0 ? '../up-arrow.svg' : '../up-arrow.svg'}
-          className={props.coinPriceChange >= 0 ? 'up-arrow' : 'down-arrow'}
+          src={quoteData.percent_change >= 0 ? '../up-arrow.svg' : '../up-arrow.svg'}
+          className={quoteData.percent_change >= 0 ? 'up-arrow' : 'down-arrow'}
           alt="" />
 
-        {props.coinPriceChange}%
+        {Number(quoteData.percent_change).toFixed(2)}%
 
         <span className="tag1">24h</span>
         &nbsp;&nbsp;
 
-        ${props.coinPrice} </span>
-
-
+        ${quoteData.open} </span>
 
       <span className="page-heading-text-3">
-        {quoteData.rolling_1d_change}% past 1 day
+        {Number(quoteData.rolling_1d_change).toFixed(2)}% past 1 day
       </span>
 
       <span className="page-heading-text-3">
-        {quoteData.rolling_7d_change}% past 7 days
+        {Number(quoteData.rolling_7d_change).toFixed(2)}% past 7 days
       </span>
 
       <span className="page-heading-text-3">
-        52 Week Low: $ {fiftyTwoWeekPercent}
+        52 Week Range: {fiftyTwoWeekPercent}%<br />
 
-        <div className="fifty-two-week-outer">
-          <div className="fifty-two-week-inner"
-            style={{
-              marginLeft: fiftyTwoWeekPercent + '%',
-              backgroundColor: fiftyTwoWeekPercent < 50 ? COLORS.red1 : COLORS.blue1
-            }}>&nbsp;</div>
-        </div>
+        <Gauge {...fiftyTwoWeekGaugeConfig} />
+
 
       </span >
 

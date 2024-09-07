@@ -700,24 +700,6 @@ h3.swatchHeader {
   }
 }
 
-.fifty-two-week-outer {
-  height: 40px;
-  min-height: 40px;
-  width: 80%;
-  padding: 10px;
-  display: block;
-  background-color: rgba(227, 227, 227, 0.804);
-  border-radius: 20px;
-}
-
-.fifty-two-week-inner {
-  height: 20px;
-  min-height: 20px;
-  min-width: 10px;
-  display: inline;
-  border-radius: 10px;
-}
-
 /* FIRST BREAKPOINT */
 @media all and (max-width: 600px) {
 
